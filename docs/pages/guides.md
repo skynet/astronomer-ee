@@ -14,4 +14,4 @@ Production:
 Dev:
 
 * [Docker for Mac](/guides/docker-for-mac)
-* [Minikube](/minikube)
+* [Minikube](/guides/minikube)
