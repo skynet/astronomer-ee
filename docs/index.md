@@ -19,7 +19,6 @@ sure the price is right for your value.
 
 ## Requirements
 The only initial requirement is a running Kubernetes cluster.
-
 If you don't have Kubernetes installed already, no fears, it's not
 too hard to [get Kubernetes Running](/kubernetes).
 

@@ -2,7 +2,7 @@
 layout: page
 title: Airflow
 permalink: /airflow/
-order: 1
+order: 2
 ---
 
 ## Architecture

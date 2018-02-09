@@ -2,7 +2,7 @@
 layout: page
 title: Clickstream
 permalink: /clickstream/
-order: 2
+order: 3
 ---
 
 ## Architecture
