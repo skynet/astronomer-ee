@@ -5,6 +5,8 @@ permalink: /guides/google-cloud/
 hide: true
 ---
 
+Objective: Install Astronomer and a single deployment of our
+Airflow module on Kubernetes on Google Cloud.
 
 ## Requirements
 
@@ -20,9 +22,6 @@ too hard to [get Kubernetes Running](/kubernetes).
 As you deploy Astronomer modules, you will need to provide additional data stores
 such as Kafka and Redis.
 
-## Quickstart
-
-To install Astronomer + a single deployment of our Airflow module:
 
 ### Provision IPs
 
