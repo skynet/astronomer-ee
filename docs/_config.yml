@@ -26,6 +26,8 @@ markdown: kramdown
 # name of the software
 name: Astronomer Enterprise Edition
 
+theme: jekyll-docs-theme
+
 project:
     version: 0.0.16
     download_url: https://github.com/astronomerio/astronomer/releases
