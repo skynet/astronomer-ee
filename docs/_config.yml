@@ -28,7 +28,7 @@ name: Astronomer Enterprise Edition
 
 project:
     version: 0.0.1
-    download_url: "#quickstart"
+    download_url: "/guides"
 
 license:
     software: Astronomer Enterprise Edition (EE) license
