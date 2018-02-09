@@ -1,6 +1,6 @@
 ---
 layout: page
 title: Minikube Guide
-permalink: /guides/minkube/
+permalink: /guides/minikube/
 hide: true
 ---
