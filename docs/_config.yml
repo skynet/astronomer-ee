@@ -26,8 +26,6 @@ markdown: kramdown
 # name of the software
 name: Astronomer Enterprise Edition
 
-theme: jekyll-docs-theme
-
 project:
     version: 0.0.1
     download_url: "#quickstart"
