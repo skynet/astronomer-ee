@@ -8,19 +8,22 @@ order: 1
 ---
 
 ## Overview
-Astronomer Enterprise Edition allows your to deploy the
-modules of the Astronomer Platform to Kubernetes, and requires
-an active subscription license from Astronomer.
+Astronomer Enterprise Edition allows your to deploy
+Astronomer Modules to Kubernetes.
+
+Usage of Enterprise Edition requires
+an active, paid subscription license from Astronomer, Inc., which you can get
+by emailing us at [humans@astronomer.io](mailto:humans@astronomer.io).
+We're super easy to deal with; we'll make
+sure the price is right for your value.
 
 ## Requirements
-The only requirement to rocking is a running Kubernetes cluster.
+The only initial requirement is a running Kubernetes cluster.
 
-If you don't have Kubernetes installed already you can run it locally
-or easily deploy to clouds.
+If you don't have Kubernetes installed already, no fears, it's not
+too hard to [get Kubernetes Running](/kubernetes).
 
-More info: [Getting Kubernetes Up](...)
-
-The Astronomer modules will require you provide data stores
+As you deploy Astronomer modules, you  will need to provide data stores
 such as Postgres, Kafka, and Redis.
 
 ## Quickstart

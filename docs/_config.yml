@@ -29,8 +29,8 @@ name: Astronomer Enterprise Edition
 theme: jekyll-docs-theme
 
 project:
-    version: 0.0.16
-    download_url: https://github.com/astronomerio/astronomer/releases
+    version: 0.0.1
+    download_url: "#quickstart"
 
 license:
     software: Astronomer Enterprise Edition (EE) license
@@ -51,14 +51,14 @@ links:
 
 ui:
     header:
-        color1: "#F19941"
-        color2: "#8A5F34"
+        color1: "#4989A6"
+        color2: "#2F2D41"
         trianglify: true
 
 social:
     github:
         user: astronomerio
-        repo: astronomer
+        repo: astronomer-ee
     twitter:
         enabled: false
         via:
