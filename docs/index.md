@@ -9,10 +9,8 @@ order: 1
 
 ## Overview
 Astronomer Enterprise Edition allows your to deploy the
-modules of the Astronomer Platform to Kubernetes.
-
-Astronomer Enterprise Edition requires an active subscription
-license from Astronomer.
+modules of the Astronomer Platform to Kubernetes, and requires
+an active subscription license from Astronomer.
 
 ## Requirements
 The only requirement to get up and running is a running Kubernetes cluster.
