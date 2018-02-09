@@ -13,7 +13,7 @@ modules of the Astronomer Platform to Kubernetes, and requires
 an active subscription license from Astronomer.
 
 ## Requirements
-The only requirement to get up and running is a running Kubernetes cluster.
+The only requirement to rocking is a running Kubernetes cluster.
 
 If you don't have Kubernetes installed already you can run it locally
 or easily deploy to clouds.
