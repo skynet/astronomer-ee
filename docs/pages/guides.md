@@ -10,6 +10,7 @@ order: 1
 Production:
 
 * [Google Cloud](/guides/google-cloud)
+* [AWS](/guides/aws)
 
 Dev:
 
