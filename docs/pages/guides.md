@@ -6,6 +6,8 @@ order: 1
 ---
 
 ## Guides
+Helm:
+* [Installation](/guides/helm)
 
 Production:
 

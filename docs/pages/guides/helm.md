@@ -1,3 +1,10 @@
+---
+layout: page
+title: Helm
+permalink: /guides/helm/
+hide: true
+---
+
 # Helm
 To install the Astronomer Platform, you will need to also have `helm` and it's deployment service `tiller` installed. If you are already using `helm`, you can skip this step.
 
