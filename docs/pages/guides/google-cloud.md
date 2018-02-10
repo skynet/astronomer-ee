@@ -5,8 +5,9 @@ permalink: /guides/google-cloud/
 hide: true
 ---
 
-Objective: Install Astronomer and a single deployment of our
-Airflow module on Kubernetes on Google Cloud.
+> **Objective:** Install Astronomer Enterprise Edition and
+a single deployment of our Airflow module
+on Kubernetes on Google Cloud.
 
 ## Requirements
 
