@@ -24,6 +24,14 @@ This section will walk you through the installation of Kubernetes on Docker. It 
 
 1. Verify install by running the `kubectl` command in terminal
 
+### Note: Docker for Mac Edge stability
+
+*Warning: Docker for Mac Edge is somewhat unstable*
+
+While Kubernetes for Docker for Mac is in beta, you may see Kubernetes stop working after an upgrade, need to reset the Kubernetes cluster, reset Docker itself to factory defaults, or a full uninstall and reinstall.
+
+Given this, we recommend *not* installing new releases right away if you are doing production work.  A more stable approach is to watch [the issues](https://github.com/docker/for-mac/issues) related to Kubernetes in the the days following a new release.
+
 ## Homebrew Install
 
 Homebrew is a package manager that describes itself as installing `the stuff you need that Apple didn’t.'
