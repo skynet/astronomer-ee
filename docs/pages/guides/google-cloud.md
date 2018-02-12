@@ -17,8 +17,9 @@ Initial requirements are:
 * [Helm/Tiller](https://github.com/kubernetes/helm) installed
 * a Postgres database that Astronomer will use
 
-If you don't have Kubernetes installed already, no fears, it's not
-too hard to [get Kubernetes Running](/kubernetes).
+If you don't have Kubernetes installed already, no fear, it's not
+too hard to [get Kubernetes Running](https://cloud.google.com/kubernetes-engine/docs/quickstart).
+If you're just getting started, you can probably get away with a single node cluster, and increase the count over time. Think about how your workload might increase over time and choose a node size that makes sense for your plans. You can't change the node type after a cluster is already created, but you can add additional node pools that have different types of nodes.
 
 As you deploy Astronomer modules, you will need to provide additional data stores
 such as Kafka and Redis.
