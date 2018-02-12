@@ -2,14 +2,14 @@
 
 Helm:
 
-* [Installation](/guides/helm)
+- [Installation](/guides/helm)
 
 Production:
 
-* [Google Cloud](/guides/google-cloud)
-* [AWS](/guides/aws)
+- [Google Cloud](/guides/google-cloud)
+- [AWS](/guides/aws)
 
 Dev:
 
-* [Docker for Mac](/guides/docker-for-mac)
-* [Minikube](/guides/minikube)
+- [Docker for Mac](/guides/docker-for-mac)
+- [Minikube](/guides/minikube)
