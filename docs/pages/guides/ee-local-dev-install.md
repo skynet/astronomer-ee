@@ -1,3 +1,10 @@
+---
+layout: page
+title: Data Services
+permalink: /guides/data-services/
+hide: true
+---
+
 # Install Enterprise Edition to a Local Kubernetes Cluster
 This guide will walk you through installing Kubernetes on a local dockerized cluster. For information on installing a local Kubernetes cluster please review [create-local-k8-dev.md][1]
 
@@ -34,7 +41,7 @@ Before installing the Astronomer Open platform, setup two databases that will se
 3. run `helm install postgresql`
 4. Capture the resource URL from successful deployment output
     - The output contains a header titled "NOTES:"
-    - In a new text doc save this URL 
+    - In a new text doc save this URL
 5. Follow the output instructions to capture your PGPASSWORD
     - `echo $PGPASSWORD`
     - Save this in a text doc with the PostgreSQL URL

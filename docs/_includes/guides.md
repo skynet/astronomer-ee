@@ -1,8 +1,8 @@
 ## Guides
 
-Helm:
+Prep:
 
-- [Installation](/guides/helm)
+- [Helm Installation](/guides/helm)
 
 Production:
 
