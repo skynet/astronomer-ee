@@ -1,24 +1,18 @@
 ---
 layout: page
-title: Data Services
+title: Data services
 permalink: /guides/data-services/
 hide: true
 ---
 
-# Install Enterprise Edition to a Local Kubernetes Cluster
-This guide will walk you through installing Kubernetes on a local dockerized cluster. For information on installing a local Kubernetes cluster please review [create-local-k8-dev.md][1]
+> Before installing Astronomer Enterprise's Airflow module,
+you'll need to bring Postgres and Redis that will serve as back-ends
+to the platform. You can bring these databases with you or run them
+in Kubernetes via helm package(s). This guide will assume
+that you want to run via the helm packages, which can be useful for local
+development at least.
 
-## Included In This Chart
-- [Apache Airflow][2]
-- [Celery][3] w/ [Flower][4]
-- [Grafana][5]
-- [Prometheus][6]
-- [Ingress][7]
-
-## Database Prerequisites
-Before installing the Astronomer Open platform, setup two databases that will serve as back-ends to the platform. You can bring these databases with you or install the helm package(s). This guide will assume that you are installing the helm packages.
-
-### Redis Deploy
+## Redis Deploy
 [Redis][8] is an in-memory data structure store that we will be using as a message broker for [Celery][3].
 
 1. run `helm install stable/redis`
@@ -28,12 +22,9 @@ Before installing the Astronomer Open platform, setup two databases that will se
 3. Follow the output instructions to capture your REDIS_PASSWORD
     - `echo $REDIS_PASSWORD`
     - Save this in a text doc with the Redis URL
+4. Verify by running `helm ls` to see the status of your deployment
 
-### Verification
-
-1. Run `helm ls` to see the status of your deployment
-
-### PostgreSQL Deploy
+## PostgreSQL Deploy
 [PostgreSQL][9] is an open-source relational DB that will serve as the back-end to Apache Airflow, Celery and Grafana. There is currently a minor bug in the stable helm chart, so for this install we will be using the Astronomer fork.
 
 1. `git clone https://github.com/astronomerio/charts.git`
@@ -45,24 +36,12 @@ Before installing the Astronomer Open platform, setup two databases that will se
 5. Follow the output instructions to capture your PGPASSWORD
     - `echo $PGPASSWORD`
     - Save this in a text doc with the PostgreSQL URL
+6. Verify by running `helm ls` to see the status of your deployment
 
-### Verification
+## Astronomer Deployment
 
-1. Run `helm ls` to see the status of your deployment
-
-## Astronomer Open Platform Deployment
-
-### Configure the Overrides
-
-In this step you will updating `overrides.yaml` to point to the Redis and PostgreSQL pods you deployed earlier in this document.
-
-1. Rename `overrides.default.yaml` to  `overrides.yaml`.
-    - Directory contents should be
-        - `astronomer/`
-        - `overrides.yaml`
-        - `README.md`
-        - `.gitignore`
-2. Update `overrides.yaml`
+Update `config.yaml` to point to the Redis and
+PostgreSQL pods you just deployed:
 
     - Configuration depending on PostgreSQL
         - `data.metadata`
@@ -90,19 +69,15 @@ results:
     password: password
 ```
 
-### Deploy Astronomer Open
+Then, to deploy Astronomer, run
+`helm install --name=astro-prod --namespace=astronomer -f config.yaml astronomer`
 
-In this step we will be deploying Astronomer Open pods to your local Kubernetes cluster.
-
-1. To deploy Astronomer Open, run `helm install -f overrides.yaml astronomer`
-
-### Verification
+## Verification
 
 1. Navigate to your Kubernetes Dashboard
-- http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+  - http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 2. Change your namespace on the left-side panel from `default` to `astronomer-system`
 3. Verify that all your pods are all-green
-
 
 [1]: /create-local-k8-dev.md                                            "Kubernetes On Docker Installation Guide"
 [2]: https://airflow.apache.org/                                        "Apache Airflow"

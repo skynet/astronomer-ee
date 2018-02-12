@@ -3,6 +3,7 @@
 Prep:
 
 - [Helm Installation](/guides/helm)
+- [Data Services](/guides/data-services)
 
 Production:
 
