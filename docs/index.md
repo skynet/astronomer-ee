@@ -7,16 +7,15 @@ permalink: /
 order: 1
 ---
 
+
 ## Overview
 
 Astronomer Enterprise Edition allows your to deploy
-Astronomer Modules to Kubernetes.
-
-Usage of Enterprise Edition requires
-an active, paid subscription license from Astronomer, Inc., which you can get
-by emailing us at [humans@astronomer.io](mailto:humans@astronomer.io).
-We're super easy to deal with; we'll make
-sure the price is right for your value.
+Astronomer Modules (Clickstream and Apache Airflow) to your Kubernetes.
+Usage of requires an active, paid subscription license from Astronomer, Inc.,
+which you can get by emailing us at
+[humans@astronomer.io](mailto:humans@astronomer.io). We're super easy to deal
+with; we'll make sure the price is right for your value.
 
 {% include guides.md %}
 
