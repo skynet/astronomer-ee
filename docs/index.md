@@ -17,17 +17,7 @@ by emailing us at [humans@astronomer.io](mailto:humans@astronomer.io).
 We're super easy to deal with; we'll make
 sure the price is right for your value.
 
-## Guides
-
-Production:
-
-* [Google Cloud](/guides/google-cloud)
-
-Dev:
-
-* [Docker for Mac](/guides/docker-for-mac)
-* [Minikube](/guides/minikube)
-
+{% include guides.md %}
 
 ## Modules
 
