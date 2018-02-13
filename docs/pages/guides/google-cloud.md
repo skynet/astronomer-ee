@@ -5,7 +5,11 @@ permalink: /guides/google-cloud/
 hide: true
 ---
 
-> **Objective:** Install Astronomer Enterprise Edition and
+{% include licensing.md %}
+
+## Objective
+
+Install Astronomer Enterprise Edition and
 a single deployment of our Airflow module
 on Kubernetes on Google Cloud.
 

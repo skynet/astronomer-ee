@@ -5,6 +5,8 @@ permalink: /clickstream/
 order: 3
 ---
 
+{% include licensing.md %}
+
 ## Architecture
 
 The Astronomer Clickstream module consists of six components:

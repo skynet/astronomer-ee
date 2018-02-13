@@ -5,7 +5,11 @@ permalink: /guides/data-services/
 hide: true
 ---
 
-> Before installing Astronomer Enterprise's Airflow module,
+{% include licensing.md %}
+
+## Preparing
+
+Before installing Astronomer Enterprise's Airflow module,
 you'll need to bring Postgres and Redis that will serve as back-ends
 to the platform. You can bring these databases with you or run them
 in Kubernetes via helm package(s). This guide will assume

@@ -5,6 +5,8 @@ permalink: /guides/docker-for-mac/
 hide: true
 ---
 
+{% include licensing.md %}
+
 # Install Kubernetes Locally via Docker For Mac Edge
 
 This guide details the steps to get Kubernetes installed locally on a machine running OSx. At the time of writing Docker Kube is only available on Docker For Mac Edge meaning that some features may not behave as fully intended.

@@ -6,6 +6,8 @@ permalink: /clickstream/add_destination
 order: 1
 ---
 
+{% include licensing.md %}
+
 ## General Process
 
 1. Write + test code for integration, if it doesn't exist yet.

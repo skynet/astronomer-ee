@@ -5,6 +5,8 @@ permalink: /airflow/
 order: 2
 ---
 
+{% include licensing.md %}
+
 ## Architecture
 
 The Astronomer Airflow module consists of seven components, and you must bring
