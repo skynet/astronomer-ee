@@ -32,12 +32,14 @@ Components that glue this all together include
 
 ![Airflow Deployment]({{ "/assets/img/airflow_deployment.png" | absolute_url }})
 
-## CLI
+## Astro CLI
 
-You can see the Astro CLI interface here:
-https://github.com/astronomerio/astro-cli/blob/master/cmd/airflow.go
+The [Astro CLI](https://github.com/astronomerio/astro-cli) is
+under very active development to
+[support Airflow-related commands](https://github.com/astronomerio/astro-cli/blob/master/cmd/airflow.go).
 
-## Using Airflow CLI remotely
+
+## Airflow CLI
 
 We’ll also make it easy to use the Airflow CLI remotely
 (i.e. run commands from your local terminal that execute in the
