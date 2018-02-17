@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Helm
+title: Migrating DAGs
 permalink: /guides/migrating-dags/
 hide: true
 ---
