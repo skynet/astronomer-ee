@@ -4,6 +4,8 @@ Prep:
 
 - [Helm Installation](/guides/helm)
 - [Data Services](/guides/data-services)
+- [Migrating DAGs](/guides/migrating-dags)
+
 
 Production:
 
