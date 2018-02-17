@@ -5,6 +5,8 @@ permalink: /guides/migrating-dags/
 hide: true
 ---
 
+{% include licensing.md %}
+
 ## Install Astro CLI
 
 > Note: we currently have two CLIs called `astro`, one for our cloud
