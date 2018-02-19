@@ -35,3 +35,4 @@ Start with fresh build.
   * Add supporting code/connections/variables/pool
   * Maybe just want to copy over all your DAGs vs. going one-by-one because it can be tedious
   * Maybe you have some issues w/ Python 2 to Python 3
+  * Plugins might be failing under the hood. Check webserver logs.
