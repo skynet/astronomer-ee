@@ -32,3 +32,9 @@ them both, for for the time being, the enterprise CLI is called
   * Maybe you have some issues w/ Python 2 to Python 3
   * Plugins might be failing under the hood. Check webserver logs.
 * Verify everything is running locally before deploying.
+
+## Deploy to production
+
+* Pause current production DAG wherever it's currently running
+* Install Astronomer Enterprise on Kubernetes on Google Cloud,
+  [following this guide](http://enterprise.astronomer.io/guides/google-cloud/).
