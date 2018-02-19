@@ -30,7 +30,7 @@ such as Kafka and Redis.
 
 
 ### Provision IPs
-The Astronomer Platform needs to exposes several services for end users to consume. If you are planning on only connecting to your cluster from inside your cluster you can skip this step. If you just want to be able to connect to thse services and work with the platform over the internet, you'll want to provision a few static IP addresses. One static IP for the Astronomer Platform services, and one for Airflow services.
+The Astronomer Platform needs to exposes several services for end users to consume. If you are planning on only connecting to your cluster from inside your cluster you can skip this step. If you just want to be able to connect to these services and work with the platform over the internet, you'll want to provision a few static IP addresses. One static IP for the Astronomer Platform services, and one for Airflow services.
 
 Provision two static IPs from Google Cloud:
 * `gcloud compute addresses create astro-ingress --global`
