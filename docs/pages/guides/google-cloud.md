@@ -28,6 +28,12 @@ If you're just getting started, you can probably get away with a single node clu
 As you deploy Astronomer modules, you will need to provide additional data stores
 such as Kafka and Redis.
 
+## Permissions
+
+Kubernetes - Engine Developer Role.
+
+Google Cloud - Compute Admin.
+
 
 ### Provision IPs
 The Astronomer Platform needs to exposes several services for end users to consume. If you are planning on only connecting to your cluster from inside your cluster you can skip this step. If you just want to be able to connect to these services and work with the platform over the internet, you'll want to provision a few static IP addresses. One static IP for the Astronomer Platform services, and one for Airflow services.
@@ -35,6 +41,11 @@ The Astronomer Platform needs to exposes several services for end users to consu
 Provision two static IPs from Google Cloud:
 * `gcloud compute addresses create astro-ingress --global`
 * `gcloud compute addresses create astro-airflow-prod --global`
+
+Be sure your account has the right Google Cloud level permissions.
+
+Run `glcoud compute addresses list` to verify everything was configured properly.
+
 
 ### Setup DNS
 Once you have static IP addresses allocated, you may want to map them to easy to remember DNS names. This step will depend on your DNS provider.
@@ -49,6 +60,8 @@ Once you have static IP addresses allocated, you may want to map them to easy to
 Now let's start the deployment process. To start, let's create namespace for the platform to live under.
 
 * `kubectl create ns astronomer`
+
+You shoud see this namepsace in your kubernetes dashboard.
 
 ### Configure and run Helm
 Now that we have a namespace to launch the Astronomer Platform into, let's download the installation package. Astronomer is packaged as a set of Helm charts. You can clone the latest charts from GitHub.
@@ -80,7 +93,7 @@ If everything went according to plan, you should be able to check the following 
 ### Secure your deployment
 If this is a production environment, you'll want to secure your services with TLS. If you have your own certificate, you can use that. Documentation on that coming soon. If you don't have certificates, you can use a tool called `kube-lego` to automatically provision and deploy certificates.
 * Delete deployment `helm delete --purge astro-prod`
-* Install kube-lego for letsencrypt
+* Install `kube-lego` for `letsencrypt`
 
 ```
 helm install \                   
