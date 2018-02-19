@@ -30,8 +30,6 @@ Start with fresh build.
 
 * `astro airflow init` - make sure you know what’s in your installation
 * Copy a real DAG into the folder
-* `astro airflow stop` `astro airflow start` (this step will
-  [unnecessary soon](https://github.com/astronomerio/astro-cli/issues/8))
 * Check Airflow UI, see if code loaded (it probably didn’t)
 * Fix your DAG or Airflow environment
   * Add supporting code/connections/variables/pool
