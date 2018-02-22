@@ -13,5 +13,5 @@ build:
 
 
 .PHONY: push-public
-push-public: build
+push-docs: build
 	gsutil -m rsync -a public-read -d -r ${OUTPUT} ${BUCKET}
