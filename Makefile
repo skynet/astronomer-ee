@@ -1,17 +1,15 @@
 # Public bucket for docs.
-DOMAIN ?= enterprise.astronomer.io
-URL ?= https://${DOMAIN}
-BUCKET ?= gs://${DOMAIN}
+DOCS_DOMAIN ?= enterprise.astronomer.io
+DOCS_BUCKET ?= gs://${DOCS_DOMAIN}
 
 # Local directories
-INPUT := docs
-OUTPUT := docs/_site
+DOCS_SRC := docs
+DOCS_DEST := docs/_site
 
 .PHONY: build-docs
 build-docs:
-	jekyll build --source ${INPUT} --destination ${OUTPUT}
-
+	jekyll build --source ${DOCS_SRC} --destination ${DOCS_DEST}
 
 .PHONY: push-docs
 push-docs: build-docs
-	gsutil -m rsync -a public-read -d -r ${OUTPUT} ${BUCKET}
+	gsutil -m rsync -a public-read -d -r ${DOCS_DEST} ${DOCS_BUCKET}
