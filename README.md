@@ -1,7 +1,7 @@
 # Astronomer Enterprise Edition
 
-This repo contains public documentation and issues for 
-[Astronomer Enterprise Edition](http://enterprise.astronomer.io).
+This repo contains public documentation and issues for
+[Astronomer Enterprise Edition](https://enterprise.astronomer.io).
 
 Related links:
 
