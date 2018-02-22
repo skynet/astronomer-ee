@@ -7,11 +7,11 @@ BUCKET ?= gs://${DOMAIN}
 INPUT := docs
 OUTPUT := docs/_site
 
-.PHONY: build
-build:
+.PHONY: build-docs
+build-docs:
 	jekyll build --source ${INPUT} --destination ${OUTPUT}
 
 
-.PHONY: push-public
-push-docs: build
+.PHONY: push-docs
+push-docs: build-docs
 	gsutil -m rsync -a public-read -d -r ${OUTPUT} ${BUCKET}
