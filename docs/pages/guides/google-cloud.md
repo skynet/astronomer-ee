@@ -30,9 +30,8 @@ such as Kafka and Redis.
 
 ## Permissions
 
-Kubernetes - Engine Developer Role.
-
-Google Cloud - Compute Admin.
+- Kubernetes - Engine Developer Role
+- Google Cloud - Compute Admin
 
 
 ### Provision IPs
