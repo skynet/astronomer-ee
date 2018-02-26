@@ -29,8 +29,13 @@ To complete this installation guide, you will need to have Kubernetes Admin and 
 
 ## Configuration File
 
-Once you have cloned helm repository, change into that directory and create a configuration file. This file will be used to set some required values as well as override default values. You can create this file by copying the templated file that already exists in the repo.
+Once you have cloned the helm repository, change into that directory. The helm charts are built to be customizable and tailored to your unique environment. The way we customize an installation is through a YAML configuration file. This file can contain global configurations that are used in multiple charts, or chart specific configurations. Global configurations are underneath the top-level `global` key. Chart specific configurations will be nested under top-level keys that correspond to the chart name. For example, to override values in the `airflow` chart, you will need to create a top-level key, `airflow`, and nest configurations under it.
+
+All charts are located under the `charts` directory and each chart contains a default `values.yaml` file that contains every possible configuration as well as the default value. The charts repository also contains a `values.yaml` file in the root of the project that overrides several values and sets up some default values. You should not edit these files directly. Instead, let's create a new YAML file where you can override these configurations, and provide some of the required configurations for the installation.
+
 `cp config.tpl.yaml config.yaml`
+
+You now have a file named `config.yaml` where you can make any configuration changes you need to. This file will contain keys for required fields, but any configuration can be overridden. Check out the root `values.yaml` file to get a feel for the structure of this file.
 
 ## Namespace
 
