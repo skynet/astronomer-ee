@@ -96,7 +96,7 @@ If this is a production environment, you'll want to secure your services with TL
 * Install `kube-lego` for `letsencrypt`
 
 ```
-helm install \                   
+helm install \
 --set=config.LEGO_EMAIL=me@mycompany.com \
 --set=config.LEGO_URL="https://acme-v01.api.letsencrypt.org/directory" \
 --set=config.LEGO_LOG_LEVEL=debug \
