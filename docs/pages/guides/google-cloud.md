@@ -100,7 +100,7 @@ You can name the secret whatever you want. Just make sure to update the `global.
 If you do not already have a valid certificate, and do not want to purchase one, you can use the free service, [Let's Encrypt](https://letsencrypt.org/). [Kube-lego](https://github.com/jetstack/kube-lego) is a project that you can deploy into your cluster that will take care of registering with Let's Encrypt and populating the secret with a TLS certificate for you. You can deploy it using the following command:
 
 ```
-helm install \                   
+helm install \
 --set=config.LEGO_EMAIL=${YOUR_EMAIL_ADDRESS} \
 --set=config.LEGO_URL="https://acme-v01.api.letsencrypt.org/directory" \
 --set=config.LEGO_LOG_LEVEL=debug \
