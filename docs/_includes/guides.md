@@ -3,9 +3,8 @@
 Prep:
 
 - [Helm Installation](/guides/helm)
-- [Data Services](/guides/data-services)
+- [Databases](/guides/databases)
 - [Migrating DAGs](/guides/migrating-dags)
-
 
 Production:
 

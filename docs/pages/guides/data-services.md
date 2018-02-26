@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Data services
-permalink: /guides/data-services/
+title: Databases
+permalink: /guides/databases/
 hide: true
 ---
 
