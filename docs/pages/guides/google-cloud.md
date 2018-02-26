@@ -57,6 +57,8 @@ Copy this value and populate `global.loadBalancerIP` in your `config.yaml` file.
 
 Now that you have a static IP address, you'll need to set up your DNS nameserver with some entries. Depending on your set up you can do one of two things here. You can either set up a wildcard A record or create individual A records for each subdomain. If nothing else is running on the domain you choose, you can quickly and easily set up a wildcard A record to point to your IP address. If you already have other services running on your domain, you can create individual records for the various services. You can create A records for any or all of the following subdomains: `registry.yourdomain`, `airflow.yourdomain`, `flower.yourdomain`, `prometheus.yourdomain`, and `grafana.yourdomain`.
 
+Once you've chosen the domain where you will be hosting the services, update `global.baseDomain` in your `config.yaml`. For example, if you entered `mycompany.io` as the `baseDomain`, your airflow UI will be available at `airflow.mycompany.io`.
+
 ## Secrets
 
 The Astronomer Platform requires several secrets to be in place before installation. At a minimum, you will need to create secrets that contain database connection strings. Optionally, you can provide a secret for TLS certificates so you can accesss the platform securely over HTTPS. If you are new to Kubernetes or secrets, you may want to check out [this guide](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/) for a quick primer.
