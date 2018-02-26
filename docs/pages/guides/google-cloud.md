@@ -9,9 +9,7 @@ hide: true
 
 ## Objective
 
-Install Astronomer Enterprise Edition and
-a single deployment of our Airflow module
-on Kubernetes on Google Cloud.
+Install Astronomer Enterprise Edition and a single deployment of our Airflow module on Kubernetes on Google Cloud.
 
 ## Requirements
 
@@ -20,6 +18,7 @@ Initial requirements are:
 * a running [Kubernetes](https://kubernetes.io/) cluster
 * [Helm/Tiller](https://github.com/kubernetes/helm) installed
 * a Postgres database that Astronomer will use
+* local clone of [this repository](https://github.com/astronomerio/helm.astronomer.io)
 
 If you don't have Kubernetes installed already, no fear, it's not
 too hard to [get Kubernetes Running](https://cloud.google.com/kubernetes-engine/docs/quickstart).
@@ -30,103 +29,118 @@ such as Kafka and Redis.
 
 ## Permissions
 
-Kubernetes - Engine Developer Role.
+To complete this installation guide, you will need to have Kubernetes Admin and Compute Admin roles in GCP. You need permission to create a cluster, as well as provision a static IP address.
 
-Google Cloud - Compute Admin.
+## Configuration File
 
+Once you have cloned helm repository, change into that directory and create a configuration file. This file will be used to set some required values as well as override default values. You can create this file by copying the templated file that already exists in the repo.
+`cp config.tpl.yaml config.yaml`
 
-### Provision IPs
-The Astronomer Platform needs to exposes several services for end users to consume. If you are planning on only connecting to your cluster from inside your cluster you can skip this step. If you just want to be able to connect to these services and work with the platform over the internet, you'll want to provision a few static IP addresses. One static IP for the Astronomer Platform services, and one for Airflow services.
+## Namespace
 
-Provision two static IPs from Google Cloud:
-* `gcloud compute addresses create astro-ingress --global`
-* `gcloud compute addresses create astro-airflow-prod --global`
+Although this is not a strict requirement, we typically recommend that you create an isolated namespace for the Astronomer Platform to live inside.
 
-Be sure your account has the right Google Cloud level permissions.
+`kubectl create namespace astronomer`
 
-Run `glcoud compute addresses list` to verify everything was configured properly.
+## DNS
 
+By default, the Astronomer Platform will only be accessible from within the Kubernetes cluster. In a production environment, you'll most likely want to securely expose the various web interfaces to the internet so your team can collaborate on the platform. To do this you'll probably want to assign the platform a domain name that you own, so your users don't have to remember an IP address. On GCP, you can create a static IP address with the following command:
 
-### Setup DNS
-Once you have static IP addresses allocated, you may want to map them to easy to remember DNS names. This step will depend on your DNS provider.
+`gcloud compute addresses create ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT}`
 
-* choose a base domain such as `astro.mycompany.com`
-* Setup a CNAME `registry.astro.mycompany.com` -> ip for astro-ingress
-* Setup a CNAME `airflow.prod.astro.mycompany.com` -> ip for astro-airflow-prod
-* Setup a CNAME `grafana.prod.astro.mycompany.com` -> ip for astro-airflow-prod
-* Setup a CNAME `flower.prod.astro.mycompany.com` -> ip for astro-airflow-prod
+To view the newly created IP address run this command:
 
-### Create a namespace
-Now let's start the deployment process. To start, let's create namespace for the platform to live under.
+`gcloud compute addresses describe ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT} --format='value(address)'`
 
-* `kubectl create ns astronomer`
+Copy this value and populate `global.loadBalancerIP` in your `config.yaml` file.
 
-You shoud see this namepsace in your kubernetes dashboard.
+Now that you have a static IP address, you'll need to set up your DNS nameserver with some entries. Depending on your set up you can do one of two things here. You can either set up a wildcard A record or create individual A records for each subdomain. If nothing else is running on the domain you choose, you can quickly and easily set up a wildcard A record to point to your IP address. If you already have other services running on your domain, you can create individual records for the various services. You can create A records for any or all of the following subdomains: `registry.yourdomain`, `airflow.yourdomain`, `flower.yourdomain`, `prometheus.yourdomain`, and `grafana.yourdomain`.
 
-### Configure and run Helm
-Now that we have a namespace to launch the Astronomer Platform into, let's download the installation package. Astronomer is packaged as a set of Helm charts. You can clone the latest charts from GitHub.
-* run `git clone https://github.com/astronomerio/helm.astronomer.io`
-* run `cd helm.astronomer.io`
+## Secrets
 
-Before deploying to a cluster, you'll need to configure a few things. Let's start by copying the boilerplate config file to a new file called `config.yaml`.
-* run `cp config.tpl.yaml config.yaml`
+The Astronomer Platform requires several secrets to be in place before installation. At a minimum, you will need to create secrets that contain database connection strings. Optionally, you can provide a secret for TLS certificates so you can accesss the platform securely over HTTPS. If you are new to Kubernetes or secrets, you may want to check out [this guide](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/) for a quick primer.
 
-Open `config.yaml` in a text editor and add a few values. Any of the values in the nested `values.yaml` config files can be overridden, but a few are highly encouraged or required. Those are listed below:
-  * `global.baseDomain: astro.mycompany.com`
-  * `astronomer.ingress.staticIpName: astro-ingress`
-  * `airflow-prod.ingress.staticIpName: astro-airflow-prod`
-  * `astronomer.registry.username: admin`
-  * `astronomer.registry.password: changeme`
+### Connection Strings
 
-In addition to the listed configurations you'll also need to fill in the database connection details. `config.yaml` is already in `.gitignore` so you won't accidentially commit any sensitive data.
+All connection strings should be created with a `connection` key that contains the actual connection string. We typically recommend Postgres for the relational data, and Redis for the Celery broker queue. You'll need to ensure that the databases specified here exist prior to deployment. The examples here use the `--from-literal` form but you can just as easily create the secrets from txt files. If you do use the `--from-literal` form the secrets will most likely be hanging around in your shell's history, which could be a concern. The following commands are using the default secret names specified in the default `config.tpl.yaml`. If you change the names, make sure you update your `config.yaml` file. These values are located under `airflow.data`. Also, don't forget to switch your `kubectl` default context to the namespace you created earlier, or specify the namespace with the `--namespace` flag.
 
-Once everything looks good you can deploy Astronomer using Helm.
-* run `helm install --name=astro-prod --namespace=astronomer -f config.yaml .`
+First, let's create a secret for the Airflow metadata.
 
-### Test
-If everything went according to plan, you should be able to check the following URL's in your browser:
-* http://airflow.prod.astro.mycompany.com
-* http://flower.prod.astro.mycompany.com
-* http://grafana.prod.astro.mycompany.com
-* http://registry.astro.mycompany.com/v2/_catalog
+`kubectl create secret generic airflow-metadata --from-literal connection='postgresql://username:password@host:port/database' --namespace astronomer`
 
-### Secure your deployment
-If this is a production environment, you'll want to secure your services with TLS. If you have your own certificate, you can use that. Documentation on that coming soon. If you don't have certificates, you can use a tool called `kube-lego` to automatically provision and deploy certificates.
-* Delete deployment `helm delete --purge astro-prod`
-* Install `kube-lego` for `letsencrypt`
+Next, let's create a secret for the Celery result backend. This only creates two additional tables, so we typically reuse the same database as the Airflow metadata. Note the `db+` prefix on this version.
+
+`kubectl create secret generic airflow-result-backend --from-literal connection='db+postgresql://username:password@host:port/database' --namespace astronomer`
+
+Now let's create a secret for the Airflow task queue broker.
+
+`kubectl create secret generic airflow-broker --from-literal connection='redis://username:password@host:port/database' --namespace astronomer`
+
+Finally, let's create a secret for Grafana. We recommend a separate database on the same server for this data. Note that Grafana expects yet another form of the postgres scheme, different from the first two.
+`kubectl create secret generic grafana-backend --from-literal connection='postgres://username:password@host:port/database' --namespace astronomer`
+
+### TLS
+
+The Astronomer Platform requires secure connections when accessing it's sevices over the public internet. To do this, you will need to polulate one more secret with your TLS key and certificate.
+
+#### Existing Certificate
+
+If you already have a wildcard certificate for the domain you are running under, then you can create the secret by running this command, specifying the absolute paths to the files on your system.
+
+`kubectl create secret tls astronomer-tls --key domain.key --cert domain.crt --namespace astronomer`
+
+You can name the secret whatever you want. Just make sure to update the `global.tlsSecret` value in your `config.yaml` if you change it.
+
+#### Let's Encrypt
+
+If you do not already have a valid certificate, and do not want to purchase one, you can use the free service, [Let's Encrypt](https://letsencrypt.org/). [Kube-lego](https://github.com/jetstack/kube-lego) is a project that you can deploy into your cluster that will take care of registering with Let's Encrypt and populating the secret with a TLS certificate for you. You can deploy it using the following command:
 
 ```
 helm install \                   
---set=config.LEGO_EMAIL=me@mycompany.com \
+--set=config.LEGO_EMAIL=${YOUR_EMAIL_ADDRESS} \
 --set=config.LEGO_URL="https://acme-v01.api.letsencrypt.org/directory" \
 --set=config.LEGO_LOG_LEVEL=debug \
 --set=rbac.create=true \
 --set=image.tag=canary \
---namespace=astro \
+--namespace=astronomer \
 stable/kube-lego
 ```
 
-* Edit `config.yaml`
-  * add `astronomer.ingress.acme: true`
-* run `helm install --name=astro-prod --namespace=astro -f config.yaml .`
+Be sure to add your email address before deploying. Let's Encrypt has rate limits that an easily be hit if you are not careful. They have a staging service that you can use to test with before deploying using the production service, as shown above. Check out the kube-lego documentation for more information.
 
-* Wait about 15 minutes
-  * Google Cloud load balancer takes about 5 min to spin up.
-  * Let's Encrypt sequence takes 5 min.
-  * 5 more min to propagate the certificate to the load balancer.
+If you do decide to go with Let's Encrypt, be sure to update the `global.acme` value to `true` in your `config.yaml`.
 
-### Test Again
-If everything worked, you'll be able to load your services over a secure connection.
-* https://airflow.prod.astro.mycompany.com
-* https://grafana.prod.astro.mycompany.com
-* https://flower.prod.astro.mycompany.com
-* https://registry.astro.mycompany.com/v2/_catalog
+#### Authentication
+Currently, the Astronomer Platform uses basic authentication and a single user. This will be changing very soon to support full role-based authentication.
 
-### Deploy an Airflow DAG
+To get started, we'll need to create a file that contains the user information. To do this we'll need the `htpasswd` utility. You should be able to install it using your system's package manager. It's usually part of a larger package called `apache-tools` or `apache2-utils` or something similar. Once you have that installed, run the following command to create a file, `auth`, with a single user. You will be prompted to enter a password.
 
-* Install CLI by running `curl -o- https://astro-cli.astronomer.io/install.sh | bash`
-* Login by running `astro auth login` with user credentials you chose earlier
-* Deploy DAGs
-* Clone some test dags, wherever you keep your code by running `git clone https://github.com/astronomerio/open-example-dags` then `cd open-example-dags`
-* Deploy `astro airflow deploy astro-prod 0.0.1`
-* Visit https://airflow.prod.astro.mycompany.com and you should see your dags!
+`htpasswd -c auth ${USERNAME}`
+
+Now, let's create the secret from that file. If you change the name of the secret, be sure to update `base.nginxAuthSecret` in your `config.yaml`.
+
+`kubectl create secret generic nginx-auth --from-file auth --namespace astronomer`
+
+
+Finally, we need to create a secret to give Kubernetes access to pull images from the private registry. The username and password here should match what was entered in the previous command.
+
+`kubectl create secret docker-registry registry-auth --docker-server registry.${YOUR_DOMAIN} --docker-username ${USERNAME} --docker-password ${PASSWORD} --docker-email ${YOUR_EMAIL} --namespace astronomer`
+
+## Installation
+
+Now that we have everything in place, we can deploy the Astronomer Platform to your cluster. All you need to do is run `helm install`, and specify your configuration file.
+
+`helm install -f config.yaml --namespace astronomer .`
+
+## Test
+
+If everything went according to plan, you should be able to check the following URL's in your browser:
+* https://airflow.yourdomain
+* https://flower.yourdomain
+* https://prometheus.yourdomain
+* https://grafana.yourdomain
+* https://registry.yourdomain/v2/_catalog
+
+## Deploy an Airflow DAG
+
+COMING SOON!
