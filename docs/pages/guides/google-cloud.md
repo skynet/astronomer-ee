@@ -136,6 +136,8 @@ Now that we have everything in place, we can deploy the Astronomer Platform to y
 
 `helm install -f config.yaml --namespace astronomer .`
 
+If you recieve any weird errors from helm, you may need to give Tiller access to the Kubernetes API. Check out [our post](/guides/helm) on setting helm up with the proper permissions.
+
 ## Test
 
 If everything went according to plan, you should be able to check the following URL's in your browser:
