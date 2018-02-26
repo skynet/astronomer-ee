@@ -75,7 +75,7 @@ Next, let's create a secret for the Celery result backend. This only creates two
 
 `kubectl create secret generic airflow-result-backend --from-literal connection='db+postgresql://username:password@host:port/database' --namespace astronomer`
 
-Now let's create a secret for the Airflow task queue broker.
+Now, let's create a secret for the Airflow task queue broker. Note that if you are using redis, the database name is an integer between 0 and 15.
 
 `kubectl create secret generic airflow-broker --from-literal connection='redis://username:password@host:port/database' --namespace astronomer`
 
