@@ -36,5 +36,5 @@ them both, for for the time being, the enterprise CLI is called
 ## Deploy to production
 
 * Pause current production DAG wherever it's currently running
-* Install Astronomer Enterprise on Kubernetes on Google Cloud,
+* Install Astronomer Enterprise on Kubernetes on Google Cloud Platform,
   [following this guide](https://enterprise.astronomer.io/guides/google-cloud/).

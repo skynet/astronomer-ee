@@ -9,7 +9,7 @@ Prep:
 
 Production:
 
-- [Google Cloud](/guides/google-cloud)
+- [Google Cloud Platform](/guides/google-cloud)
 - [AWS](/guides/aws)
 
 Dev:
