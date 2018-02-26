@@ -80,6 +80,7 @@ Now, let's create a secret for the Airflow task queue broker. Note that if you a
 `kubectl create secret generic airflow-broker --from-literal connection='redis://username:password@host:port/database' --namespace astronomer`
 
 Finally, let's create a secret for Grafana. We recommend a separate database on the same server for this data. Note that Grafana expects yet another form of the postgres scheme, different from the first two.
+
 `kubectl create secret generic grafana-backend --from-literal connection='postgres://username:password@host:port/database' --namespace astronomer`
 
 ### TLS
