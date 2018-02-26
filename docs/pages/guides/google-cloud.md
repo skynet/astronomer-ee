@@ -131,6 +131,7 @@ Be sure to add your email address before deploying. Let's Encrypt has rate limit
 If you do decide to go with Let's Encrypt, be sure to update the `global.acme` value to `true` in your `config.yaml`.
 
 #### Authentication
+
 Currently, the Astronomer Platform uses basic authentication and a single user. This will be changing very soon to support full role-based authentication.
 
 To get started, we'll need to create a file that contains the user information. To do this we'll need the `htpasswd` utility. You should be able to install it using your system's package manager. It's usually part of a larger package called `apache-tools` or `apache2-utils` or something similar. Once you have that installed, run the following command to create a file, `auth`, with a single user. You will be prompted to enter a password.
@@ -164,11 +165,12 @@ If you recieve any weird errors from helm, you may need to give Tiller access to
 ## Test
 
 If everything went according to plan, you should be able to check the following URL's in your browser:
-* https://airflow.yourdomain
-* https://flower.yourdomain
-* https://prometheus.yourdomain
-* https://grafana.yourdomain
-* https://registry.yourdomain/v2/_catalog
+
+* <https://airflow.yourdomain>
+* <https://flower.yourdomain>
+* <https://prometheus.yourdomain>
+* <https://grafana.yourdomain>
+* <https://registry.yourdomain/v2/_catalog>
 
 ## Deploy an Airflow DAG
 
