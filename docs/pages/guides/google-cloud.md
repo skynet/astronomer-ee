@@ -15,11 +15,9 @@ Install Astronomer Enterprise Edition and a single deployment of our Airflow mod
 
 Initial requirements are:
 
-* A live [Kubernetes](https://kubernetes.io/) cluster
-* [Helm/Tiller](https://github.com/kubernetes/helm) installed in the cluster
-* A Postgres database
-* A Redis database
-* Local clone of [our helm charts](https://github.com/astronomerio/helm.astronomer.io)
+* A live [Kubernetes](https://kubernetes.io/) cluster with [Helm (Tiller)](https://github.com/kubernetes/helm) installed
+* Databases (Postgres & Redis)
+* A clone of the [Astronomer Platform Helm charts](https://github.com/astronomerio/helm.astronomer.io)
 
 If you don't have Kubernetes installed already, no fear, it's not too hard to [get Kubernetes Running](https://cloud.google.com/kubernetes-engine/docs/quickstart). If you're just getting started, you can probably get away with a single node cluster, and increase the count over time. Think about how your workload might increase over time and choose a node size that makes sense for your plans. You can't change the node type after a cluster is already created, but you can add additional node pools that have different types of nodes.
 
