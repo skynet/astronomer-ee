@@ -169,6 +169,14 @@ helm install -f config.yaml --namespace astronomer .
 
 If you recieve any weird errors from helm, you may need to give Tiller access to the Kubernetes API. Check out [our post](/guides/helm) on setting helm up with the proper permissions.
 
+## Upgrade
+
+To roll out an upgrade to an existing release:
+
+```bash
+helm upgrade -f config.yaml --namespace astronomer <release name> .
+```
+
 ## Test
 
 If everything went according to plan, you should be able to check the following URL's in your browser:
