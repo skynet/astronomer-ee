@@ -5,6 +5,43 @@ permalink: /guides/google-cloud/
 hide: true
 ---
 
+<!-- Target -->
+<input id="foo" value="https://github.com/zenorocha/clipboard.js.git">
+
+<!-- Trigger -->
+<button type="button" class="btn btn-primary" data-clipboard-target="#foo">
+    <!-- <img src="assets/clippy.svg" alt="Copy to clipboard"> -->
+    Copy
+</button>
+
+<script type="text/javascript">
+
+$(function(){
+	// dynamically insert copy buttons
+	$('div.highlighter-rouge').after(
+		function(){
+			return '<button class="btn btn-primary">copy</button>';
+		}
+	);
+
+	// wire up copy buttons to code blocks
+    var clipboard = new Clipboard('.btn', {
+    	target: function(trigger) {
+    		return trigger.previousElementSibling;
+    	}
+    });
+    clipboard.on('success', function(e) {
+        console.log('success', e);
+    });
+    clipboard.on('error', function(e) {
+        console.log('error', e);
+    });
+});
+
+</script>
+
+---
+
 {% include licensing.md %}
 
 ## Objective
