@@ -5,26 +5,6 @@ permalink: /guides/google-cloud/
 hide: true
 ---
 
-<script type="text/javascript">
-
-$(function(){
-	// dynamically insert copy buttons
-	$('div.highlighter-rouge').after(
-		'<button class="btn btn-primary">copy</button>'
-	);
-
-	// wire up copy buttons to code blocks
-    var clipboard = new Clipboard('.btn', {
-    	target: function(trigger) {
-    		return trigger.previousElementSibling;
-    	}
-    });
-});
-
-</script>
-
----
-
 {% include licensing.md %}
 
 ## Objective
