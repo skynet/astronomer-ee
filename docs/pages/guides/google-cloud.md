@@ -10,9 +10,7 @@ hide: true
 $(function(){
 	// dynamically insert copy buttons
 	$('div.highlighter-rouge').after(
-		function(){
-			return '<button class="btn btn-primary">copy</button>';
-		}
+		'<button class="btn btn-primary">copy</button>'
 	);
 
 	// wire up copy buttons to code blocks
