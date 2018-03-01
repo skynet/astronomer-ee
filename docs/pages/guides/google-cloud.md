@@ -67,7 +67,7 @@ Once you've chosen the domain where you will be hosting the services, update `gl
 
 ## Secrets
 
-The Astronomer Platform requires several secrets to be in place before installation. At a minimum, you will need to create secrets that contain database connection strings. Optionally, you can provide a secret for TLS certificates so you can accesss the platform securely over HTTPS. If you are new to Kubernetes or secrets, you may want to check out [this guide](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/) for a quick primer.
+The Astronomer Platform requires several secrets to be in place before installation. At a minimum, you will need to create secrets that contain database connection strings. Optionally, you can provide a secret for TLS certificates so you can accesss the platform securely over HTTPS. If you are new to Kubernetes or secrets, you may want to check out [this guide](https://kubernetes.io/docs/concepts/configuration/secret/) for a quick primer.
 
 ### Connection Strings
 
