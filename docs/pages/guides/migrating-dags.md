@@ -15,7 +15,7 @@ them both, for for the time being, the enterprise CLI is called
 `astro-cli`. If you're not using our cloud edition CLI, you can alias
 `astro-cli` to `astro`.
 
-* https://github.com/astronomerio/astro-cli
+* <https://github.com/astronomerio/astro-cli>
 * `go get github.com/astronomerio/astro-cli`
 * `alias astro=astro-cli` in your `.bash_profile`
 

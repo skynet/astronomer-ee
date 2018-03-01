@@ -79,7 +79,7 @@ Then, to deploy Astronomer, run
 ## Verification
 
 1. Navigate to your Kubernetes Dashboard
-  - http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+  - <http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/>
 2. Change your namespace on the left-side panel from `default` to `astronomer-system`
 3. Verify that all your pods are all-green
 
