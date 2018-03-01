@@ -140,8 +140,8 @@ Currently, the Astronomer Platform uses basic authentication and a single user. 
 
 To get started, we'll need to create a file that contains the user information. To do this we'll need the `htpasswd` utility.
 
-- On Linux, install this via your system package manager, usually as part of a larger package called `apache-tools` or `apache2-utils` or something similar.
-- On macOS, it comes pre-installed.
+* On Linux, install this via your system package manager, usually as part of a larger package called `apache-tools` or `apache2-utils` or something similar.
+* On macOS, it comes pre-installed.
 
 Once you have that installed, run the following command to create a file, `auth`, with a single user. You will be prompted to enter a password.
 
