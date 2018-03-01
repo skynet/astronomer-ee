@@ -1,5 +1,7 @@
 # Astronomer Enterprise Edition
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/767db9044c166e3669cd/maintainability)](https://codeclimate.com/github/astronomerio/astronomer-ee/maintainability)
+
 This repo contains public documentation and issues for
 [Astronomer Enterprise Edition](https://enterprise.astronomer.io).
 
