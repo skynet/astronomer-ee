@@ -31,7 +31,9 @@ This section will walk you through the installation of Kubernetes on Docker. It 
 
 ### Note: Docker for Mac Edge stability
 
+<!-- markdownlint-disable MD036 -->
 *Warning: Docker for Mac Edge is somewhat unstable*
+<!-- markdownlint-enable MD036 -->
 
 While Kubernetes for Docker for Mac is in beta, you may see Kubernetes stop working after an upgrade, need to reset the Kubernetes cluster, reset Docker itself to factory defaults, or a full uninstall and reinstall.
 
