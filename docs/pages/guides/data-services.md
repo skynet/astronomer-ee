@@ -17,6 +17,7 @@ that you want to run via the helm packages, which can be useful for local
 development at least.
 
 ## Redis Deploy
+
 [Redis][8] is an in-memory data structure store that we will be using as a message broker for [Celery][3].
 
 1. run `helm install stable/redis`
@@ -29,6 +30,7 @@ development at least.
 4. Verify by running `helm ls` to see the status of your deployment
 
 ## PostgreSQL Deploy
+
 [PostgreSQL][9] is an open-source relational DB that will serve as the back-end to Apache Airflow, Celery and Grafana. There is currently a minor bug in the stable helm chart, so for this install we will be using the Astronomer fork.
 
 1. `git clone https://github.com/astronomerio/charts.git`
