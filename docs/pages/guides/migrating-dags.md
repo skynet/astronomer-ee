@@ -9,14 +9,13 @@ hide: true
 
 ## Install Astro CLI
 
-
-* <https://github.com/astronomerio/astro-cli>
-* `go get github.com/astronomerio/astro-cli`
-* `alias astro=astro-cli` in your `.bash_profile`
 > Note: we currently have two CLIs called `astro`, one for our Cloud Edition and
 this new CLI for Enterprise Edition. We're working to merge them, but for the
 time being, the Enterprise CLI is called `astro-cli`. If you're not using our
 Cloud Edition CLI, you can alias `astro-cli` to `astro`.
+>
+> See the README in <https://github.com/astronomerio/astro-cli> for complete
+installation instructions.
 
 ## Choose some DAGs + verify they run locally
 
