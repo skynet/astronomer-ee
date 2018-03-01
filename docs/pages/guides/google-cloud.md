@@ -73,7 +73,9 @@ The Astronomer Platform requires several secrets to be in place before installat
 
 All connection strings should be created with a `connection` key that contains the actual connection string. We typically recommend Postgres for the relational data, and Redis for the Celery task queue. You'll need to ensure that the databases specified here exist prior to deployment. The examples here use the `--from-literal` form but you can just as easily create the secrets from txt files. If you do use the `--from-literal` form, the secrets will most likely be hanging around in your shell's history, which could be a security concern. The following commands are using the default secret names specified in the root `values.yaml`. If you change the names, make sure you update your `config.yaml` file. These values are located under `airflow.data`. Also, don't forget to switch your `kubectl` default context to the namespace you created earlier, or specify the namespace with the `--namespace` flag.
 
+<!-- markdownlint-disable MD036 -->
 *Note: Pay careful attention to the 3 different styles of PostgreSQL URI schemes required below (`postgresql://...`, `db+postgresql://...`, `postgres://...`).*
+<!-- markdownlint-enable MD036 -->
 
 First, let's create a secret for the Airflow metadata.
 
@@ -138,8 +140,8 @@ Currently, the Astronomer Platform uses basic authentication and a single user. 
 
 To get started, we'll need to create a file that contains the user information. To do this we'll need the `htpasswd` utility.
 
-- On Linux, install this via your system package manager, usually as part of a larger package called `apache-tools` or `apache2-utils` or something similar.
-- On macOS, it comes pre-installed.
+* On Linux, install this via your system package manager, usually as part of a larger package called `apache-tools` or `apache2-utils` or something similar.
+* On macOS, it comes pre-installed.
 
 Once you have that installed, run the following command to create a file, `auth`, with a single user. You will be prompted to enter a password.
 

@@ -18,7 +18,6 @@ your own Postgres and Redis database.
 This kit is fully open-sourced (Apache 2.0) and you can experiment with it at
 [https://open.astronomer.io/airflow/](https://open.astronomer.io/airflow/).
 
-
 ## DAG Deployment
 
 Astronomer Enterprise makes it easy to deploy these containers
@@ -37,7 +36,6 @@ Components that glue this all together include
 The [Astro CLI](https://github.com/astronomerio/astro-cli) is
 under very active development to
 [support Airflow-related commands](https://github.com/astronomerio/astro-cli/blob/master/cmd/airflow.go).
-
 
 ## Airflow CLI
 

@@ -17,30 +17,32 @@ that you want to run via the helm packages, which can be useful for local
 development at least.
 
 ## Redis Deploy
+
 [Redis][8] is an in-memory data structure store that we will be using as a message broker for [Celery][3].
 
 1. run `helm install stable/redis`
-2. Capture the resource URL from successful deployment out
+1. Capture the resource URL from successful deployment out
     - The output contains a header titled "NOTES:"
     - In a new text doc save this URL
-3. Follow the output instructions to capture your REDIS_PASSWORD
+1. Follow the output instructions to capture your REDIS_PASSWORD
     - `echo $REDIS_PASSWORD`
     - Save this in a text doc with the Redis URL
-4. Verify by running `helm ls` to see the status of your deployment
+1. Verify by running `helm ls` to see the status of your deployment
 
 ## PostgreSQL Deploy
+
 [PostgreSQL][9] is an open-source relational DB that will serve as the back-end to Apache Airflow, Celery and Grafana. There is currently a minor bug in the stable helm chart, so for this install we will be using the Astronomer fork.
 
 1. `git clone https://github.com/astronomerio/charts.git`
-2. `cd charts/stable`
-3. run `helm install postgresql`
-4. Capture the resource URL from successful deployment output
+1. `cd charts/stable`
+1. run `helm install postgresql`
+1. Capture the resource URL from successful deployment output
     - The output contains a header titled "NOTES:"
     - In a new text doc save this URL
-5. Follow the output instructions to capture your PGPASSWORD
+1. Follow the output instructions to capture your PGPASSWORD
     - `echo $PGPASSWORD`
     - Save this in a text doc with the PostgreSQL URL
-6. Verify by running `helm ls` to see the status of your deployment
+1. Verify by running `helm ls` to see the status of your deployment
 
 ## Astronomer Deployment
 
@@ -55,6 +57,7 @@ PostgreSQL pods you just deployed:
         - `data.broker`
 
 Below are example configurations with local dev defaults being denoted by a *
+
 ```yaml
 results:
     host: intentional-marmot-postgresql.default.svc.cluster.local
@@ -79,9 +82,9 @@ Then, to deploy Astronomer, run
 ## Verification
 
 1. Navigate to your Kubernetes Dashboard
-  - http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
-2. Change your namespace on the left-side panel from `default` to `astronomer-system`
-3. Verify that all your pods are all-green
+    - <http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/>
+1. Change your namespace on the left-side panel from `default` to `astronomer-system`
+1. Verify that all your pods are all-green
 
 [1]: /create-local-k8-dev.md                                            "Kubernetes On Docker Installation Guide"
 [2]: https://airflow.apache.org/                                        "Apache Airflow"

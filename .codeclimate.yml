@@ -11,6 +11,8 @@ plugins:
         enabled: false
       MD013:
         enabled: false
+      MD033:
+        enabled: false
   pep8:
     enabled: true
   radon:
