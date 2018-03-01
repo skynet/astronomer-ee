@@ -57,6 +57,7 @@ PostgreSQL pods you just deployed:
         - `data.broker`
 
 Below are example configurations with local dev defaults being denoted by a *
+
 ```yaml
 results:
     host: intentional-marmot-postgresql.default.svc.cluster.local

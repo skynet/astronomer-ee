@@ -18,6 +18,7 @@ To install the Astronomer Platform, you will need to also have `helm` and it's d
 If your cluster has RBAC enabled (usually by default in modern clusters), you'll need to take a few extra steps to give `tiller` the ability to talk to the Kubernetes API.
 
 First, create a `ServiceAccount` and `ClusterRole` for `tiller` to use. Save the following to a file called `rbac-config.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -38,4 +39,5 @@ subjects:
     name: tiller
     namespace: kube-system
 ```
+
 Then, run `kubectl create -f rbac-config.yaml` to create the resources in your cluster. After that, run `helm init --service-account tiller` to install `tiller` with the new service account. `tiller` should now have permissions to deploy charts.
