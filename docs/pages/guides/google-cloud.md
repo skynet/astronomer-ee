@@ -195,4 +195,10 @@ If everything went according to plan, you should be able to check the following 
 
 ## Deploy an Airflow DAG
 
-COMING SOON!
+First, you'll need to download and install the astro CLI. This command will download the latest binary and install it to `/usr/local/bin` on your system.
+
+```bash
+curl -sL https://install.astronomer.io | sudo bash
+```
+
+Next, you'll need an Airflow project with some DAGs that you can deploy to the platform. Coming soon!
