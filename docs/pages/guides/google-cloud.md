@@ -140,17 +140,23 @@ If you do decide to go with Let's Encrypt, be sure to update the `global.acme` v
 
 #### Authentication
 
-Currently, the Astronomer Platform uses basic authentication and a single user. This will be changing very soon to support full role-based authentication.
+Currently, the Astronomer Platform uses basic authentication. This will be changing very soon to support full role-based authentication.
 
 To get started, we'll need to create a file that contains the user information. To do this we'll need the `htpasswd` utility.
 
 * On Linux, install this via your system package manager, usually as part of a larger package called `apache-tools` or `apache2-utils` or something similar.
 * On macOS, it comes pre-installed.
 
-Once you have that installed, run the following command to create a file, `auth`, with a single user. You will be prompted to enter a password.
+Once you have that installed, run the following command to create a blank file.  We'll call it `auth`
+
+```
+touch auth
+```
+
+Then for each user you want to add run the following command. You will be prompted to enter a password.
 
 ```bash
-htpasswd -c auth ${USERNAME}
+htpasswd auth ${USERNAME}
 ```
 
 Now, let's create the secret from that file. If you change the name of the secret, be sure to update `base.nginxAuthSecret` in your `config.yaml`.
