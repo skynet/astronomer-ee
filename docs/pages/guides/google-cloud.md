@@ -114,7 +114,7 @@ The Astronomer Platform requires secure connections when accessing it's sevices 
 If you already have a wildcard certificate for the domain you are running under, then you can create the secret by running this command, specifying the absolute paths to the files on your system.
 
 ```bash
-kubectl create secret tls astronomer-tls --key domain.key --cert domain.crt --namespace astronomer
+kubectl create secret tls ${CLUSTER_NAME}-tls --key domain.key --cert domain.crt --namespace astronomer
 ```
 
 You can name the secret whatever you want. Just make sure to update the `global.tlsSecret` value in your `config.yaml` if you change it.
