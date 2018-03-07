@@ -9,6 +9,24 @@ order: 1
 
 {% include licensing.md %}
 
+Astronomer Enterprise Edition is an enterprise-grade data
+engineering platform that allows any developer to jump to the task
+of creating and managing data pipelines very quickly. The platform
+includes a Heroku-like CLI capability to deploy pipelines, as
+well as a New Relic-like interface to monitor and troubleshoot
+running pipelines.
+
+The platform leverages leading open source tools
+including Kubernetes, Airflow, Prometheus, and Grafana — and also
+includes a library of
+[open-source Airflow connectors](https://github.com/airflow-plugins)
+that we have been building and curating for the past year.
+
+<iframe width="560" height="315" style="margin:20px 0;"
+  src="https://www.youtube.com/embed/PESuvgnsP8Q"
+  frameborder="0" allow="autoplay; encrypted-media"
+allowfullscreen></iframe>
+
 {% include guides.md %}
 
 ## Modules
