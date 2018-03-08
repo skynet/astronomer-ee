@@ -60,7 +60,7 @@ Helm is a package manager for Kubernetes itself. In Helm a package is called a C
 There are a couple of [helm installation options][7], for this install we will be using homebrew.
 
 1. run `brew install kubernetes-helm`
-1. run `helm tiller`
+1. run `helm init`
   - This command will deploy the helm server to your Docker Kubernetes cluster
 
 ### Verification
