@@ -15,3 +15,7 @@ Dev:
 
 - [Docker for Mac](/guides/docker-for-mac)
 - [Minikube](/guides/minikube)
+
+Customization:
+
+- [Configuring Airflow](/guides/configuring-airflow)
