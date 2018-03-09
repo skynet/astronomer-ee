@@ -31,6 +31,7 @@
   <script type="text/javascript">
     $(function(){
       // dynamically insert copy button
+      $('div.highlighter-rouge > .highlight').addClass('clearfix');
       $('div.highlighter-rouge > .highlight').prepend(
         '<button class="btn btn-default btn-sm btn-copy pull-right" type="submit">copy</button>'
       );
