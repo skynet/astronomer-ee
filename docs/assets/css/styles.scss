@@ -92,3 +92,7 @@ a.btn-outline-inverse {
 .highlighter-rouge > .highlight > button {
   margin-left: 5px;
 }
+
+.highlighter-rouge > .highlight > .highlight {
+  word-break: keep-all;
+}
