@@ -39,7 +39,7 @@
       // wire up copy buttons to code blocks
       var clipboard = new Clipboard('.btn', {
         target: function(trigger) {
-          return trigger.nextSibling;
+          return trigger.nextElementSibling;
         }
       });
     });
