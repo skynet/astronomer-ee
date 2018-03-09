@@ -88,3 +88,11 @@ a.btn-outline-inverse {
   padding: 20px;
   margin-bottom: 30px;
 }
+
+.highlighter-rouge > .highlight > button {
+  margin-left: 5px;
+}
+
+.highlighter-rouge > .highlight > .highlight {
+  word-break: keep-all;
+}
