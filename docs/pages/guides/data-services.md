@@ -60,7 +60,7 @@ Below are example configurations with local dev defaults being denoted by a *
 
 ```yaml
 results:
-    host: intentional-marmot-postgresql.default.svc.cluster.local
+    host: intentional-marmot-postgresql
     port: 5432*
     database: airflow
     username: postgres*
@@ -69,12 +69,14 @@ results:
 
 ```yaml
 results:
-    host: braided-alpaca-redis.default.svc.cluster.local
+    host: braided-alpaca-redis
     port: 6379*
     database: 0*
     username: ''*
     password: password
 ```
+
+Note: If deploying a database in a separate Kubernetes namespace, you'll need to use fully qualified URLs for the PostgreSQL and/or Redis host. For example, `intentional-marmot-postgresql` would become `intentional-marmot-postgresql.default.svc.cluster.local` where `default` is the database's Kubernetes namespace.
 
 Then, to deploy Astronomer, run
 `helm install --name=astro-prod --namespace=astronomer -f config.yaml astronomer`
