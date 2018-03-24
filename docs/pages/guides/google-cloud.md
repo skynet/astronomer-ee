@@ -107,7 +107,7 @@ kubectl create secret generic grafana-backend --from-literal connection='postgre
 
 ### TLS
 
-The Astronomer Platform requires secure connections when accessing it's sevices over the public internet. To do this, you will need to polulate one more secret with your TLS key and certificate.
+When getting started with the Astronomer Platform you can deploy without enabling TLS. This will give you a feel for the platform by allowing you to access individual resources. However, when you are ready for a production deploy you will need to enable TLS. This is because the Astronomer Platform requires secure connections when accessing it's sevices over the public internet. To do this, you will need to populate one more secret with your TLS key and certificate.
 
 #### Existing Certificate
 
