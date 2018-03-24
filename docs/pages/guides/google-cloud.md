@@ -71,7 +71,7 @@ The Astronomer Platform requires several secrets to be in place before installat
 
 ### Connection Strings
 
-All connection strings should be created with a `connection` key that contains the actual connection string. We typically recommend Postgres for the relational data, and Redis for the Celery task queue. You'll need to ensure that the databases specified here exist prior to deployment.
+All connection strings should be created with a `connection` key that contains the actual connection string. Postgres is required for the relational data, and we typically recommend Redis for the Celery task queue. You'll need to ensure that the databases specified here exist prior to deployment.
 
 WARNING: The examples here use the `--from-literal` option to demonstrate the format of the values, but you can just as easily create the secrets from txt files, using the `--from-file` option. This would look something like this: `kubectl create secret generic airflow-metadata --from-file connection=airflow-metadata.txt`, where the content of the `txt` file is the connection string. If you do use the `--from-literal` form, the secrets will most likely be hanging around in your shell's history, which could be a security concern.
 
@@ -81,7 +81,13 @@ The following commands are using the default secret names specified in the root 
 *Note: Pay careful attention to the 3 different styles of PostgreSQL URI schemes required below (`postgresql://...`, `db+postgresql://...`, `postgres://...`).*
 <!-- markdownlint-enable MD036 -->
 
-First, let's create a secret for the Airflow metadata.
+First, let's create a secret for the houtson database, houston being the core API of Astronomer.
+
+```bash
+kubectl create secret generic houston-database --from-literal connection='postgresql://username:password@host:port/database' --namespace astronomer
+```
+
+Now, let's create the secret for Airflow, starting with the db for Airflow metadata.
 
 ```bash
 kubectl create secret generic airflow-metadata --from-literal connection='postgresql://username:password@host:port/database' --namespace astronomer
@@ -165,11 +171,19 @@ Now, let's create the secret from that file. If you change the name of the secre
 kubectl create secret generic nginx-auth --from-file auth --namespace astronomer
 ```
 
-Finally, we need to create a secret to give Kubernetes access to pull images from the private registry. The username and password here should match what was entered in the previous command.
+Now, we need to create a secret to give Kubernetes access to pull images from the private registry. The username and password here should match what was entered in the previous command.
 
 ```bash
 kubectl create secret docker-registry registry-auth --docker-server registry.${YOUR_DOMAIN} --docker-username ${USERNAME} --docker-password ${PASSWORD} --docker-email ${YOUR_EMAIL} --namespace astronomer
 ```
+
+Finally, in preparation for an authentication system, we need to create a passphrase for encrypting JWTs.
+
+```bash
+kubectl create secret generic houston-jwt-passphrase --from-literal passphrase='[random string]' --namespace astronomer
+```
+
+
 
 ## Installation
 
