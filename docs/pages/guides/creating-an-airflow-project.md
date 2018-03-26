@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Deploying Your First DAG to Astronomer Enterprise
-permalink: /guides/deploying-your-first-dag/
+permalink: /guides/creating-an-airflow-project/
 hide: true
 ---
 
@@ -10,7 +10,6 @@ hide: true
 # Objective 
 We have built a CLI to get you up and running with Airflow as quickly as possible. This guide details how to create, setup and run your Airflow project.
 
-
 ## Requirements
 Guide requirements are
 - [astro-cli](https://github.com/astronomerio/astro-cli) installed
@@ -18,12 +17,12 @@ Guide requirements are
     - If you don't have a DAG at this time, that's okay, we suggest picking out an [example-dag](https://github.com/airflow-plugins/Example-Airflow-DAGs) from our [airflow-plugins](https://github.com/airflow-plugins) repository.
 
 ## Creating Your Project
-Before running your first DAG you will need to intialize your Astronomer EE Airflow project.
+Before running your first DAG you will need to initialize your Astronomer EE Airflow project.
 
 ### Creating A Project Directory
 Create a project directory in your desired root directory. 
 
-Change into the root development directory on your machine. This is often the directory where you have chose to house various development respositories on your computer. If you don't have one yet, we suggest creating a "dev" directory in your home path `~/dev/`.
+Change into the root development directory on your machine. This is often the directory where you have chose to house various development repositories on your computer. If you don't have one yet, we suggest creating a "dev" directory in your home path `~/dev/`.
 
 ```bash
 cd [EXAMPLE_ROOT_DEV_DIR]
@@ -65,14 +64,13 @@ You will now see the following files and folders
 You have initialized your Astronomer Airflow project and now you can begin to build your project from scratch or import and existing one.
 
 ### DAGs
-Directed acyclic graphs (DAG) are the configuration for your workflows and a core component of an Airflow Project. If you are migrating an existing Airflow project you likely have several DAG files you wish to import. You can place all DAG files into the `dags/` directory. They will be importing to your docker image when you deploy or test locally. This directory gets added to your docker image in the `$AIRFLOW_HOME` directory.
+Directed acyclic graphs (DAG) are the configuration for your workflows and a core component of an Airflow Project. If you are migrating an existing Airflow project you likely have several DAG files you wish to import. You can place all DAG files into the `dags/` directory. They will be imported to your Docker image when you deploy or test locally. This directory gets added to your Docker image in the `$AIRFLOW_HOME` directory.
 
 ### Plugins
-The [Airflow Plugin](https://airflow.apache.org/plugins.html) system can be used to make managing workflow logic easier or even expand the funcionality of Airflow itself. If you have any plugin requirements or would like to bring in a plugin from [airflow-plugins](https://github.com/airflow-plugins), they can be put into the `plugins/` project directory. As in the case of the `dags/` directory,  this directory will get added to your docker image in the `$AIRFLOW_HOME` directory.
+The [Airflow Plugin](https://airflow.apache.org/plugins.html) system can be used to make managing workflow logic easier or even expand the functionality of Airflow itself. If you have any plugin requirements or would like to bring in a plugin from [airflow-plugins](https://github.com/airflow-plugins), they can be put into the `plugins/` project directory. As in the case of the `dags/` directory, this directory will get added to your docker image in the `$AIRFLOW_HOME` directory.
 
 ### Requirements
-In order to keep our images lightweight, we ship with only the [Python standard lib](https://docs.python.org/3/library/index.html). When you find yourself needing modules not included in the standard lib, you can use `requirements.txt`. You requirements file can be used to add additional Python requirements in the same way a standard [Python requirements](https://pip.readthedocs.io/en/1.1/requirements.html) file works.
-
+In order to keep our images lightweight, we ship with only the [Python standard lib](https://docs.python.org/3/library/index.html). When you find yourself needing modules not included in the standard lib, you can modify `requirements.txt`. Your requirements file can be used to add additional Python requirements in the same way a standard [Python requirements](https://pip.readthedocs.io/en/1.1/requirements.html) file works.
 
 ## Running Your Project Locally
 We have built tooling to make development and testing of your Airflow projects as simple as possible. From your root project directory you can start your Airflow project.
@@ -81,5 +79,6 @@ We have built tooling to make development and testing of your Airflow projects a
 astro airflow start
 ```
 
-This command will inject any depedencies discussed above into the docker image and then run that docker image locally. After a successful build you will see hyperlinks to your local Airflow resources.
+This command will inject any dependencies discussed above into the Docker image and then run that Docker image locally. After a successful build you will see hyperlinks to your local Airflow resources.
+
 
