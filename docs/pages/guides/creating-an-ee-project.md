@@ -8,23 +8,22 @@ hide: true
 {% include licensing.md %}
 
 # Objective 
-You have successfully setup and deployed [Astronomer EE](https://enterprise.astronomer.io/guides/google-cloud/), now it is time to setup a project and deploy your first DAG.
+We have built a CLI to get you up and running with Airflow as quickly as possible. This guide details how to create, setup and run your Airflow project.
 
 
 ## Requirements
 Guide requirements are
-- Astronomer EE with TLS Enabled
 - [astro-cli](https://github.com/astronomerio/astro-cli) installed
-- an [Airflow DAG](https://airflow.incubator.apache.org/concepts.html#dags) you wish to deploy
+- an [Airflow DAG](https://airflow.incubator.apache.org/concepts.html#dags) you wish to run
     - If you don't have a DAG at this time, that's okay, we suggest picking out an [example-dag](https://github.com/airflow-plugins/Example-Airflow-DAGs) from our [airflow-plugins](https://github.com/airflow-plugins) repository.
 
 ## Creating Your Project
-Before deploying your first DAG you will need to intialize your Astronomer EE Airflow project.
+Before running your first DAG you will need to intialize your Astronomer EE Airflow project.
 
 ### Creating A Project Directory
 Create a project directory in your desired root directory. 
 
-Change into the root development directory on your machine. This is often the directory where you have chose to house various development respositories on your computer. If you don't have one yet, don't worry, we suggest creating a "dev" directory in your home path `~/dev/`.
+Change into the root development directory on your machine. This is often the directory where you have chose to house various development respositories on your computer. If you don't have one yet, we suggest creating a "dev" directory in your home path `~/dev/`.
 
 ```bash
 cd [EXAMPLE_ROOT_DEV_DIR]
@@ -75,43 +74,12 @@ The [Airflow Plugin](https://airflow.apache.org/plugins.html) system can be used
 In order to keep our images lightweight, we ship with only the [Python standard lib](https://docs.python.org/3/library/index.html). When you find yourself needing modules not included in the standard lib, you can use `requirements.txt`. You requirements file can be used to add additional Python requirements in the same way a standard [Python requirements](https://pip.readthedocs.io/en/1.1/requirements.html) file works.
 
 
+## Running Your Project Locally
+We have built tooling to make development and testing of your Airflow projects as simple as possible. From your root project directory you can start your Airflow project.
 
+```bash
+astro airflow start
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### File and Folder Description
-This section contains a brief description of various files and folders that were created in the previous section.
-#### ./astro
-This hidden folder houses the `config.yaml` file for your project. You should never have to interface with this folder or it's contents directly.
-#### .dockerignore
-The [.dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore-file) file is used to avoid adding extraneous contents to the docker image.
-#### Dockerfile
-A standard [Dockerfile](https://docs.docker.com/engine/reference/builder/). It can be modified to customize your Airflow image as needed.
-#### dags/
-#### include/
-#### packages.txt
-#### plugins/
-#### requirements.txt
-
-
+This command will inject any depedencies discussed above into the docker image and then run that docker image locally. After a successful build you will see hyperlinks to your local Airflow resources.
 
