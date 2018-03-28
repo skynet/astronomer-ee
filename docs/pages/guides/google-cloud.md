@@ -213,12 +213,15 @@ If everything went according to plan, you should be able to check the following 
 * <https://grafana.yourdomain>
 * <https://registry.yourdomain/v2/_catalog>
 
-## Deploy an Airflow DAG
+## CLI Install
 
-First, you'll need to download and install the astro CLI. This command will download the latest binary and install it to `/usr/local/bin` on your system.
+We have built a feature rich CLI for interfacing with your Astronomer EE Install. The below command will download the latest binary and install [astro-cli](https://github.com/astronomerio/astro-cli) to `/usr/local/bin` on your system.
 
 ```bash
 curl -sL https://install.astronomer.io | sudo bash
 ```
 
-Next, you'll need an Airflow project with some DAGs that you can deploy to the platform. Coming soon!
+## Next Steps
+
+Next you will want to import an existing Airflow project or [create a new Airflow project](/guides/creating-an-airflow-project/
+) from scratch. Afterwards you can begin [deploying your first DAG(s)](/guides/deploying-your-first-dag/) to your Astronomer EE install.
