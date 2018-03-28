@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Deploying Your First DAG to Astronomer Enterprise
+title: Setting Up An Airflow Project
 permalink: /guides/creating-an-airflow-project/
 hide: true
 ---
