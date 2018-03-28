@@ -16,6 +16,11 @@ Dev:
 - [Docker for Mac](/guides/docker-for-mac)
 - [Minikube](/guides/minikube)
 
+Usage:
+
+- [Setting Up An Airflow Project](/guides/creating-an-airflow-project/)
+- [Deploying Your First DAG](/guides/deploying-your-first-dag/)
+
 Customization:
 
 - [Configuring Airflow](/guides/configuring-airflow)
