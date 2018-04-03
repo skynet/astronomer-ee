@@ -27,7 +27,7 @@ markdown: kramdown
 name: Astronomer Enterprise Edition
 
 project:
-    version: 0.1.2
+    version: 0.1.4
     download_url: "/guides"
 
 license:
