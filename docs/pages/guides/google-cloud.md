@@ -173,7 +173,7 @@ Now, let's create the secret from that file. If you change the name of the secre
 kubectl create secret generic nginx-auth --from-file auth --namespace astronomer
 ```
 
-Now, we need to create a secret to give Kubernetes access to pull images from the private registry. The username and password here should match what was entered in the previous command.
+Now, we need to create a secret to give Kubernetes access to pull images from the private registry. The username and password here should match one user in the auth file created above.
 
 ```bash
 kubectl create secret docker-registry registry-auth --docker-server registry.${YOUR_DOMAIN} --docker-username ${USERNAME} --docker-password ${PASSWORD} --docker-email ${YOUR_EMAIL} --namespace astronomer
