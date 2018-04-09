@@ -12,4 +12,7 @@ build-docs:
 
 .PHONY: push-docs
 push-docs: build-docs
-	gsutil -m rsync -a public-read -d -r ${DOCS_DEST} ${DOCS_BUCKET}
+	gsutil \
+		-h "Content-Type:text/html" \
+		-h "Cache-Control:public, max-age=300" \
+		-m rsync -a public-read -d -r ${DOCS_DEST} ${DOCS_BUCKET}
