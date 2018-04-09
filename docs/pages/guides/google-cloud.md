@@ -15,11 +15,11 @@ Install Astronomer Enterprise Edition and a single deployment of our Airflow mod
 
 Initial requirements are:
 
-* A live [Kubernetes](https://kubernetes.io/) cluster with [Helm (Tiller)](https://github.com/kubernetes/helm) installed
+* A live [Kubernetes](https://kubernetes.io/){:target="_blank"} cluster with [Helm (Tiller)](https://github.com/kubernetes/helm){:target="_blank"} installed
 * Databases (Postgres & Redis)
-* A clone of the [Astronomer Platform Helm charts](https://github.com/astronomerio/helm.astronomer.io)
+* A clone of the [Astronomer Platform Helm charts](https://github.com/astronomerio/helm.astronomer.io){:target="_blank"}
 
-If you don't have Kubernetes installed already, no fear, it's not too hard to [get Kubernetes Running](https://cloud.google.com/kubernetes-engine/docs/quickstart). If you're just getting started, you can probably get away with a single node cluster, and increase the count over time. Think about how your workload might increase over time and choose a node size that makes sense for your plans. You can't change the node type after a cluster is already created, but you can add additional node pools that have different types of nodes.
+If you don't have Kubernetes installed already, no fear, it's not too hard to [get Kubernetes Running](https://cloud.google.com/kubernetes-engine/docs/quickstart){:target="_blank"}. If you're just getting started, you can probably get away with a single node cluster, and increase the count over time. Think about how your workload might increase over time and choose a node size that makes sense for your plans. You can't change the node type after a cluster is already created, but you can add additional node pools that have different types of nodes.
 
 ## Permissions
 
@@ -129,7 +129,7 @@ You can name the secret whatever you want. Just make sure to update the `global.
 
 #### Let's Encrypt
 
-If you do not already have a valid certificate, and do not want to purchase one, you can use the free service, [Let's Encrypt](https://letsencrypt.org/). [Kube-lego](https://github.com/jetstack/kube-lego) is a project that you can deploy into your cluster that will take care of registering with Let's Encrypt and populating the secret with a TLS certificate for you. You can deploy it using the following command:
+If you do not already have a valid certificate, and do not want to purchase one, you can use the free service, [Let's Encrypt](https://letsencrypt.org/){:target="_blank"}. [Kube-lego](https://github.com/jetstack/kube-lego){:target="_blank"} is a project that you can deploy into your cluster that will take care of registering with Let's Encrypt and populating the secret with a TLS certificate for you. You can deploy it using the following command:
 
 ```bash
 helm install \
@@ -217,7 +217,7 @@ If everything went according to plan, you should be able to check the following 
 
 ## CLI Install
 
-We have built a feature rich CLI for interfacing with your Astronomer EE Install. The below command will download the latest binary and install [astro-cli](https://github.com/astronomerio/astro-cli) to `/usr/local/bin` on your system.
+We have built a feature rich CLI for interfacing with your Astronomer EE Install. The below command will download the latest binary and install [astro-cli](https://github.com/astronomerio/astro-cli){:target="_blank"} to `/usr/local/bin` on your system.
 
 ```bash
 curl -sL https://install.astronomer.io | sudo bash

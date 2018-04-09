@@ -35,4 +35,4 @@ installation instructions.
 
 * Pause current production DAG wherever it's currently running
 * Install Astronomer Enterprise on Kubernetes on Google Cloud Platform,
-  [following this guide](https://enterprise.astronomer.io/guides/google-cloud/).
+  [following this guide](https://enterprise.astronomer.io/guides/google-cloud/){:target="_blank"}.

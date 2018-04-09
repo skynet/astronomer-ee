@@ -22,7 +22,7 @@ includes a library of
 [open-source Airflow connectors](https://github.com/airflow-plugins)
 that we have been building and curating for the past year.
 
-<iframe width="560" height="315" style="display: block; margin: 20px auto;"
+<iframe width="560" height="315" style="display: block; margin: 4rem auto;"
   src="https://www.youtube.com/embed/PESuvgnsP8Q"
   frameborder="0" allow="autoplay; encrypted-media"
 allowfullscreen></iframe>

@@ -39,17 +39,17 @@
 }
 
 #jumbotron-header {
-    position:relative;
+  position: relative;
+  color: white;
+  font-family: 'Sofia Pro';
+  background-color: #302c43;
+  background-image: url(/assets/img/stars-bg.png);
+  background-size: 100%;
+  text-align: center;
+}
 
-    &:after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        height: 50px;
-        width: 30%;
-        background: linear-gradient(135deg, transparent 50px, white 50px);
-    }
+#jumbotron-header .container {
+  padding: 6rem 0;
 }
 
 img {
@@ -59,6 +59,21 @@ img {
 .bs-docs-nav .navbar-brand, .bs-docs-nav .navbar-nav>li>a {
     color: #2F2D41 !important;
 }
+
+.bs-docs-sidenav > li {
+  font-family: 'Filmotype Fashion';
+  text-transform: uppercase;
+}
+
+p, h1, h2, h3, li, a, ul, .licensing, .back-to-top {
+  font-family: 'Sofia Pro';
+}
+
+.bs-docs-sidenav > li > a {
+  font-size: 0.8em !important;
+}
+
+
 a {
   color: #44959B;
 }
