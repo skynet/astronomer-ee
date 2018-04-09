@@ -7,7 +7,7 @@ hide: true
 
 {% include licensing.md %}
 
-## Install Astro CLI
+## Install Astronomer CLI
 
 > Note: we currently have two CLIs called `astro`, one for our Cloud Edition and
 this new CLI for Enterprise Edition. We're working to merge them, but for the

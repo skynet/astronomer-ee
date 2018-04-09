@@ -31,9 +31,9 @@ Components that glue this all together include
 
 ![Airflow Deployment]({{ "/assets/img/airflow_deployment.png" | absolute_url }})
 
-## Astro CLI
+## Astronomer CLI
 
-The [Astro CLI](https://github.com/astronomerio/astro-cli){:target="_blank"} is
+The [Astronomer CLI](https://github.com/astronomerio/astro-cli){:target="_blank"} is
 under very active development to
 [support Airflow-related commands](https://github.com/astronomerio/astro-cli/blob/master/cmd/airflow.go){:target="_blank"}.
 
