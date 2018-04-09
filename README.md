@@ -9,7 +9,7 @@ Related links:
 
 * Platform
   * [helm.astronomer.io](https://github.com/astronomerio/helm.astronomer.io)
-  * [Astro CLI](https://github.com/astronomerio/astro-cli)
+  * [Astronomer CLI](https://github.com/astronomerio/astro-cli)
   * [Commander](https://github.com/astronomerio/commander)
   * [Docker images for modules](https://github.com/astronomerio/astronomer)
 * Clickstream
