@@ -50,13 +50,13 @@ kubectl create namespace astronomer
 By default, the Astronomer Platform will only be accessible from within the Kubernetes cluster. In a production environment, you'll most likely want to securely expose the various web interfaces to the internet so your team can collaborate on the platform. To do this you'll probably want to assign the platform a domain name that you own, so your users don't have to remember an IP address. On GCP, you can create a static IP address with the following command:
 
 ```bash
-gcloud compute addresses create ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT}
+gcloud compute addresses create ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT_ID}
 ```
 
 To view the newly created IP address run this command:
 
 ```bash
-gcloud compute addresses describe ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT} --format='value(address)'
+gcloud compute addresses describe ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT_ID} --format='value(address)'
 ```
 
 Copy this value and populate `global.loadBalancerIP` in your `config.yaml` file.
