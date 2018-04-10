@@ -21,6 +21,10 @@ Initial requirements are:
 
 If you don't have Kubernetes installed already, no fear, it's not too hard to [get Kubernetes Running](https://cloud.google.com/kubernetes-engine/docs/quickstart). If you're just getting started, you can probably get away with a single node cluster, and increase the count over time. Think about how your workload might increase over time and choose a node size that makes sense for your plans. You can't change the node type after a cluster is already created, but you can add additional node pools that have different types of nodes.
 
+### Support for Private Clusters (Beta)
+
+Private clusters is currently a beta feature on Google Kubernetes Engine (GKE) that allows your master to be made inaccessible from public internet. We are actively working on support for private clusters. Unless your use case specifically requires it, our recommended default is to use a public cluster.
+
 ## Permissions
 
 To complete this installation guide, you will need to have Kubernetes Admin and Compute Admin roles in GCP. You need permission to create a cluster, as well as provision a static IP address.
