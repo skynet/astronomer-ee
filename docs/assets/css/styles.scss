@@ -44,7 +44,8 @@
   font-family: 'Sofia Pro';
   background-color: #302c43;
   background-image: url(/assets/img/stars-bg.png);
-  background-size: 100%;
+  background-size: 20%;
+  background-repeat: repeat;
   text-align: center;
 }
 
@@ -110,4 +111,16 @@ a.btn-outline-inverse {
 
 .highlighter-rouge > .highlight > .highlight {
   word-break: keep-all;
+}
+
+.home-title {
+  color: #fefcf9;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  color: #302c43;
+}
+
+html {
+  background-color: #fefcf9;
 }

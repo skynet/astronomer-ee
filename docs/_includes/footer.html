@@ -26,12 +26,14 @@
                            data-count="horizontal"
                            data-via="{{ site.social.twitter.via }}"
                            data-text="{{ site.name }}"
-                           data-hashtags="{{ site.social.twitter.hash }}">Tweet</a>
+                           data-hashtags="{{ site.social.twitter.hash }}"
+                           target="_blank">Tweet</a>
                     </li>
                 {% endif %}
                 {% if site.twitter.account %}
                     <li>
                         <a href="https://twitter.com/{{ site.social.twitter.account }}"
+                           target="_blank"
                            class="twitter-follow-button"
                            data-show-count="true">Follow @{{ site.social.twitter.account }}</a>
                     </li>
@@ -61,7 +63,7 @@
             Licensed under <a href="{{ site.license.software_url }}" target="_blank">{{ site.license.software }}</a>, documentation under <a href="{{ site.license.docs_url }}">{{ site.license.docs }}</a>.
         </p>
         <p>
-            Documentation template by <a href="http://getbootstrap.com">Bootstrap team</a>, generated with <a href="https://github.com/allejo/jekyll-docs-theme">Jekyll Docs Theme</a>
+            Documentation template by <a href="http://getbootstrap.com" target="_blank">Bootstrap team</a>, generated with <a href="https://github.com/allejo/jekyll-docs-theme">Jekyll Docs Theme</a>
         </p>
 
         <ul class="bs-docs-footer-links muted">
