@@ -88,25 +88,25 @@ The following commands are using the default secret names specified in the root 
 First, let's create a secret for the houtson database, houston being the core API of Astronomer.
 
 ```bash
-kubectl create secret generic houston-database --from-literal connection='postgresql://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic houston-database --from-literal connection='postgresql://username:password@host:port/${HOUSTON_DB}' --namespace astronomer
 ```
 
 Now, let's create the secret for Airflow, starting with the db for Airflow metadata.
 
 ```bash
-kubectl create secret generic airflow-metadata --from-literal connection='postgresql://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic airflow-metadata --from-literal connection='postgresql://username:password@host:port/${AIRFLOW_DB}' --namespace astronomer
 ```
 
 Next, let's create a secret for the Celery result backend. This only creates two additional tables, so we typically reuse the same database as the Airflow metadata. Note the `db+` prefix on this version.
 
 ```bash
-kubectl create secret generic airflow-result-backend --from-literal connection='db+postgresql://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic airflow-result-backend --from-literal connection='db+postgresql://username:password@host:port/${RESULTS_DB}' --namespace astronomer
 ```
 
 Now, let's create a secret for Grafana. We recommend a separate database on the same server for this data. Note that Grafana expects yet another form of the postgres scheme, different from the first two.
 
 ```bash
-kubectl create secret generic grafana-backend --from-literal connection='postgres://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic grafana-backend --from-literal connection='postgres://username:password@host:port/${GRAFANA_DB}' --namespace astronomer
 ```
 
 Finally, let's create a secret for the Airflow task queue broker. Note that if you are using redis, the database name is an integer between 0 and 15.
