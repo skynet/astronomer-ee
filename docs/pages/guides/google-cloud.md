@@ -186,7 +186,7 @@ kubectl create secret docker-registry registry-auth --docker-server registry.${Y
 Finally, in preparation for an authentication system, we need to create a passphrase for encrypting JWTs.
 
 ```bash
-kubectl create secret generic houston-jwt-passphrase --from-literal passphrase=${RANDON_STRING} --namespace astronomer
+kubectl create secret generic houston-jwt-passphrase --from-literal passphrase=${RANDOM_STRING} --namespace astronomer
 ```
 
 
