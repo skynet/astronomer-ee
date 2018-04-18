@@ -1,6 +1,18 @@
 ---
 ---
 
+@font-face {
+    font-family: 'Filmotype Fashion';
+    src: url("https://cdn.astronomer.io/app/fonts/filmotype/filmotype.eot");
+    src: url("https://cdn.astronomer.io/app/fonts/filmotype/filmotype.eot?#iefix") format('embedded-opentype'),url("https://cdn.astronomer.io/app/fonts/filmotype/filmo.woff2") format('woff2'),url("https://cdn.astronomer.io/app/fonts/filmotype/filmotype.woff") format('woff'),url("https://cdn.astronomer.io/app/fonts/filmotype/filmotype.ttf") format('truetype')
+  }
+
+  @font-face{
+      font-family:"Sofia Regular";
+      src:url("https://cdn.astronomer.io/app/fonts/sofia-pro/941243bb-e692-46f8-91b9-6e621e5c1ff8.eot");
+      src:url("https://cdn.astronomer.io/app/fonts/sofia-pro/941243bb-e692-46f8-91b9-6e621e5c1ff8.eot?#iefix") format("eot"),url("https://cdn.astronomer.io/app/fonts/sofia-pro/sofia-regular.woff2") format("woff2"),url("$https://cdn.astronomer.io/app/fonts/sofia-pro/476fe015-ab32-40a2-8fed-0a5af9a3bba4.woff") format("woff"),url("https://cdn.astronomer.io/app/fonts/sofia-pro/d8bcfa37-4f93-49cf-8dea-c29e894af58e.ttf") format("truetype"),url("https://cdn.astronomer.io/app/fonts/sofia-pro/28fc42bb-8761-4e6a-8c62-65d4a41c9e33.svg#28fc42bb-8761-4e6a-8c62-65d4a41c9e33") format("svg");
+  }
+
 .bs-docs-masthead {
   padding-top: 50px;
   padding-bottom: 40px;
@@ -41,7 +53,7 @@
 #jumbotron-header {
   position: relative;
   color: white;
-  font-family: 'Sofia Pro';
+  font-family: 'Sofia Regular', 'Open Sans', Helvetica, Arial, sans-serif;
   background-color: #302c43;
   background-image: url(/assets/img/stars-bg.png);
   background-size: 20%;
@@ -67,7 +79,7 @@ img {
 }
 
 p, h1, h2, h3, li, a, ul, .licensing, .back-to-top {
-  font-family: 'Sofia Pro';
+  font-family: 'Sofia Regular', 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
 .bs-docs-sidenav > li > a {
