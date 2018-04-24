@@ -5,7 +5,7 @@ permalink: /guides/migrating-dags/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 ## Install Astronomer CLI
 

@@ -5,7 +5,7 @@ permalink: /guides/google-cloud/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 ## Objective
 

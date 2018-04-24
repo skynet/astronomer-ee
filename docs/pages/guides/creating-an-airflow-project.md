@@ -5,7 +5,7 @@ permalink: /guides/creating-an-airflow-project/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 # Objective 
 We have built a CLI to get you up and running with Airflow as quickly as possible. This guide details how to create, setup and run your Airflow project.

@@ -5,7 +5,10 @@ layout: default
 <div class="container">
     <div class="bs-docs-container row">
         <div class="col-md-12" role="main">
-            <div class="bs-docs-section">{{ content }}</div>
+            <div class="bs-docs-section">
+              {% include licensing.html %}
+              {{ content }}
+            </div>
         </div>
 
         <div class="col-md-3 bs-docs-sidebar hidden-print" role="complementary">

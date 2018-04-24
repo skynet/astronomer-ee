@@ -5,7 +5,7 @@ permalink: /guides/deploying-your-first-dag/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 # Objective 
 You have created and tested your Airflow DAG locally via the [astro-cli](https://github.com/astronomerio/astro-cli){:target="_blank"}. This guide will show you how to deploy a DAG to your Astronomer EE cluster.

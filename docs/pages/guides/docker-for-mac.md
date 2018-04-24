@@ -5,7 +5,7 @@ permalink: /guides/docker-for-mac/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 # Install Kubernetes Locally via Docker For Mac Edge
 

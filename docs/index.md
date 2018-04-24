@@ -7,7 +7,7 @@ permalink: /
 order: 1
 ---
 
-{% include licensing.md %}
+
 
 # Overview
 

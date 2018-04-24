@@ -5,7 +5,7 @@ permalink: /airflow/
 order: 2
 ---
 
-{% include licensing.md %}
+
 
 ## Architecture
 

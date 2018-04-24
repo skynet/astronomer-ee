@@ -5,7 +5,7 @@ permalink: /guides/databases/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 ## Preparing
 
