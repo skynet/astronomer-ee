@@ -6,7 +6,7 @@ permalink: /clickstream/add_destination
 order: 1
 ---
 
-{% include licensing.md %}
+
 
 ## General Process
 

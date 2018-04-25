@@ -12,7 +12,7 @@ Configure Airflow specific settings via Helm charts and Kubernetes Secrets.
 ## Prerequisites
 
 * General familiarity with Kubernetes Secrets
-* A clone of the [Astronomer Platform Helm charts](https://github.com/astronomerio/helm.astronomer.io)
+* A clone of the [Astronomer Platform Helm charts](https://github.com/astronomerio/helm.astronomer.io){:target="_blank"}
 
 ## Configuration File
 _Note - If you have completed the [Google Cloud Platform Guide](/guides/google-cloud/) you can skip this step._
@@ -30,7 +30,7 @@ You now have a file named `config.yaml` where you can make any configuration cha
 ## Airflow Configuration via Helm Charts
 
 ### Airflow Configuration Overview
-Immediately after deploying your first cluster, you probably want to begin to customize your deployment for your production needs. This is where Airflow configurations come into play. Airflow stores these configurations in [airflow.cfg](https://github.com/apache/incubator-airflow/blob/master/airflow/config_templates/default_airflow.cfg). In this file, you will find a full list of configurable settings. 
+Immediately after deploying your first cluster, you probably want to begin to customize your deployment for your production needs. This is where Airflow configurations come into play. Airflow stores these configurations in [airflow.cfg](https://github.com/apache/incubator-airflow/blob/master/airflow/config_templates/default_airflow.cfg){:target="_blank"}. In this file, you will find a full list of configurable settings. 
 
 Note that this file is broken out into sections denoted by the square bracket syntax ([example]). This section syntax is important when we go to define environment variables that map to configurations in `airflow.cfg`. The standard template for this mapping is `$AIRFLOW__{SECTION}__KEY` (note the double underscores). 
 

@@ -5,7 +5,7 @@ permalink: /airflow/
 order: 2
 ---
 
-{% include licensing.md %}
+
 
 ## Architecture
 
@@ -16,7 +16,7 @@ your own Postgres and Redis database.
 ![Airflow Module]({{ "/assets/img/airflow_module.png" | absolute_url }})
 
 This kit is fully open-sourced (Apache 2.0) and you can experiment with it at
-[https://open.astronomer.io/airflow/](https://open.astronomer.io/airflow/).
+[https://open.astronomer.io/airflow/](https://open.astronomer.io/airflow/){:target="_blank"}.
 
 ## DAG Deployment
 
@@ -26,8 +26,8 @@ CLI to deploy DAGs through a private Docker registry that interacts
 with the Kubernetes API.
 
 Components that glue this all together include
-[Phoenix](https://github.com/astronomerio/phoenix) and
-[Commander](https://github.com/astronomerio/commander).
+[Phoenix](https://github.com/astronomerio/phoenix){:target="_blank"} and
+[Commander](https://github.com/astronomerio/commander){:target="_blank"}.
 
 ![Airflow Deployment]({{ "/assets/img/airflow_deployment.png" | absolute_url }})
 
@@ -40,9 +40,9 @@ Additional [RUN](https://docs.docker.com/engine/reference/builder/#run
 
 ## Astronomer CLI
 
-The [Astronomer CLI](https://github.com/astronomerio/astro-cli) is
+The [Astronomer CLI](https://github.com/astronomerio/astro-cli){:target="_blank"} is
 under very active development to
-[support Airflow-related commands](https://github.com/astronomerio/astro-cli/blob/master/cmd/airflow.go).
+[support Airflow-related commands](https://github.com/astronomerio/astro-cli/blob/master/cmd/airflow.go){:target="_blank"}.
 
 ## Airflow CLI
 
@@ -53,6 +53,6 @@ cloud Airflow).
 ## Other community contributions
 
 We’re building out a
-[library of Airflow Plugins](https://github.com/airflow-plugins)
+[library of Airflow Plugins](https://github.com/airflow-plugins){:target="_blank"}
 and we’re also doing an
-[Airflow podcast](soundcloud.com/the-airflow-podcast).
+[Airflow podcast](soundcloud.com/the-airflow-podcast){:target="_blank"}.

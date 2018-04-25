@@ -5,6 +5,6 @@ permalink: /guides/aws/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 Coming soon.

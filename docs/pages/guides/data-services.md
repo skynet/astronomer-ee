@@ -5,7 +5,7 @@ permalink: /guides/databases/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 ## Preparing
 
@@ -18,7 +18,7 @@ development at least.
 
 ## Redis Deploy
 
-[Redis][8] is an in-memory data structure store that we will be using as a message broker for [Celery][3].
+[Redis][8]{:target="_blank"} is an in-memory data structure store that we will be using as a message broker for [Celery][3]{:target="_blank"}.
 
 1. run `helm install stable/redis`
 1. Capture the resource URL from successful deployment out
@@ -31,7 +31,7 @@ development at least.
 
 ## PostgreSQL Deploy
 
-[PostgreSQL][9] is an open-source relational DB that will serve as the back-end to Apache Airflow, Celery and Grafana. There is currently a minor bug in the stable helm chart, so for this install we will be using the Astronomer fork.
+[PostgreSQL][9]{:target="_blank"} is an open-source relational DB that will serve as the back-end to Apache Airflow, Celery and Grafana. There is currently a minor bug in the stable helm chart, so for this install we will be using the Astronomer fork.
 
 1. `git clone https://github.com/astronomerio/charts.git`
 1. `cd charts/stable`
