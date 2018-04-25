@@ -21,6 +21,10 @@ Initial requirements are:
 
 If you don't have Kubernetes installed already, no fear, it's not too hard to [get Kubernetes Running](https://cloud.google.com/kubernetes-engine/docs/quickstart){:target="_blank"}. If you're just getting started, you can probably get away with a single node cluster, and increase the count over time. Think about how your workload might increase over time and choose a node size that makes sense for your plans. You can't change the node type after a cluster is already created, but you can add additional node pools that have different types of nodes.
 
+### Support for Private Clusters (Beta)
+
+Private clusters is currently a beta feature on Google Kubernetes Engine (GKE) that allows your master to be made inaccessible from public internet. We are actively working on support for private clusters. Unless your use case specifically requires it, our recommended default is to use a public cluster.
+
 ## Permissions
 
 To complete this installation guide, you will need to have Kubernetes Admin and Compute Admin roles in GCP. You need permission to create a cluster, as well as provision a static IP address.
@@ -50,13 +54,13 @@ kubectl create namespace astronomer
 By default, the Astronomer Platform will only be accessible from within the Kubernetes cluster. In a production environment, you'll most likely want to securely expose the various web interfaces to the internet so your team can collaborate on the platform. To do this you'll probably want to assign the platform a domain name that you own, so your users don't have to remember an IP address. On GCP, you can create a static IP address with the following command:
 
 ```bash
-gcloud compute addresses create ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT}
+gcloud compute addresses create ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT_ID}
 ```
 
 To view the newly created IP address run this command:
 
 ```bash
-gcloud compute addresses describe ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT} --format='value(address)'
+gcloud compute addresses describe ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT_ID} --format='value(address)'
 ```
 
 Copy this value and populate `global.loadBalancerIP` in your `config.yaml` file.
@@ -84,25 +88,25 @@ The following commands are using the default secret names specified in the root 
 First, let's create a secret for the houtson database, houston being the core API of Astronomer.
 
 ```bash
-kubectl create secret generic houston-database --from-literal connection='postgresql://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic houston-database --from-literal connection='postgresql://username:password@host:port/${HOUSTON_DB}' --namespace astronomer
 ```
 
 Now, let's create the secret for Airflow, starting with the db for Airflow metadata.
 
 ```bash
-kubectl create secret generic airflow-metadata --from-literal connection='postgresql://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic airflow-metadata --from-literal connection='postgresql://username:password@host:port/${AIRFLOW_DB}' --namespace astronomer
 ```
 
 Next, let's create a secret for the Celery result backend. This only creates two additional tables, so we typically reuse the same database as the Airflow metadata. Note the `db+` prefix on this version.
 
 ```bash
-kubectl create secret generic airflow-result-backend --from-literal connection='db+postgresql://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic airflow-result-backend --from-literal connection='db+postgresql://username:password@host:port/${RESULTS_DB}' --namespace astronomer
 ```
 
 Now, let's create a secret for Grafana. We recommend a separate database on the same server for this data. Note that Grafana expects yet another form of the postgres scheme, different from the first two.
 
 ```bash
-kubectl create secret generic grafana-backend --from-literal connection='postgres://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic grafana-backend --from-literal connection='postgres://username:password@host:port/${GRAFANA_DB}' --namespace astronomer
 ```
 
 Finally, let's create a secret for the Airflow task queue broker. Note that if you are using redis, the database name is an integer between 0 and 15.
@@ -182,7 +186,7 @@ kubectl create secret docker-registry registry-auth --docker-server registry.${Y
 Finally, in preparation for an authentication system, we need to create a passphrase for encrypting JWTs.
 
 ```bash
-kubectl create secret generic houston-jwt-passphrase --from-literal passphrase=${RANDON_STRING} --namespace astronomer
+kubectl create secret generic houston-jwt-passphrase --from-literal passphrase=${RANDOM_STRING} --namespace astronomer
 ```
 
 

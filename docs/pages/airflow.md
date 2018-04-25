@@ -31,6 +31,13 @@ Components that glue this all together include
 
 ![Airflow Deployment]({{ "/assets/img/airflow_deployment.png" | absolute_url }})
 
+Remember to run `astro airflow init` after creating a new project directory.
+
+Any Python packages can be added to `requirements.txt` and all OS level packages can be added to `packages.txt` in the project directory.
+
+Additional [RUN](https://docs.docker.com/engine/reference/builder/#run
+) commands can be added to the `Dockerfile`. Environment varaibles can also be added to [ENV](https://docs.docker.com/engine/reference/builder/#env).
+
 ## Astronomer CLI
 
 The [Astronomer CLI](https://github.com/astronomerio/astro-cli){:target="_blank"} is
