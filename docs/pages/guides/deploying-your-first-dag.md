@@ -34,4 +34,4 @@ We have now configured the astro-cli to point at your Astronomer EE deploy and a
 astro airflow deploy [release-name]
 ```
 
-After running this command you will see some stdout as the CLI builds and pushes images to your private registry. After a deploy, you can view your updated instance. If using the default install this will be located at airflow.[baseDomain].
+After running this command you will see some stdout as the CLI builds and pushes images to your private registry. After a deploy, you can view your updated instance. If using the default install this will be located at `airflow.[baseDomain]`.
