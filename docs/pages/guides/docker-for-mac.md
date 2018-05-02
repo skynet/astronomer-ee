@@ -5,7 +5,7 @@ permalink: /guides/docker-for-mac/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 # Install Kubernetes Locally via Docker For Mac Edge
 
@@ -18,12 +18,12 @@ This guide details the steps to get Kubernetes installed locally on a machine ru
 
 ## Kubernetes For Mac Install
 
-This section will walk you through the installation of Kubernetes on Docker. It is recommended that you use Kubernetes on Docker and not [minikube][2] as several users have failed to get working installs via the minikube method.
+This section will walk you through the installation of Kubernetes on Docker. It is recommended that you use Kubernetes on Docker and not [minikube][2]{:target="_blank"} as several users have failed to get working installs via the minikube method.
 
 ### Installation Steps
 
-1. [Download Docker For Mac Edge][1]
-1. [Enable Kubernetes Support on Docker Edge][3]
+1. [Download Docker For Mac Edge][1]{:target="_blank"}
+1. [Enable Kubernetes Support on Docker Edge][3]{:target="_blank"}
 
 ### Verification
 
@@ -37,7 +37,7 @@ This section will walk you through the installation of Kubernetes on Docker. It 
 
 While Kubernetes for Docker for Mac is in beta, you may see Kubernetes stop working after an upgrade, need to reset the Kubernetes cluster, reset Docker itself to factory defaults, or a full uninstall and reinstall.
 
-Given this, we recommend *not* installing new releases right away if you are doing production work.  A more stable approach is to watch [the issues](https://github.com/docker/for-mac/issues) related to Kubernetes in the the days following a new release.
+Given this, we recommend *not* installing new releases right away if you are doing production work.  A more stable approach is to watch [the issues](https://github.com/docker/for-mac/issues){:target="_blank"} related to Kubernetes in the the days following a new release.
 
 ## Homebrew Install
 
@@ -45,7 +45,7 @@ Homebrew is a package manager that describes itself as installing `the stuff you
 
 ### Installation Steps
 
-1. [Install Homebrew][4]
+1. [Install Homebrew][4]{:target="_blank"}
 
 ### Verification
 
@@ -53,11 +53,11 @@ Homebrew is a package manager that describes itself as installing `the stuff you
 
 ### Helm via Homebrew Install
 
-Helm is a package manager for Kubernetes itself. In Helm a package is called a Chart. Under the hood a `Chart` is a collection of files definiting the configuration of Kubernetes resources. The [Kubernetes github organization][5] provides a list of [stable Charts][6].
+Helm is a package manager for Kubernetes itself. In Helm a package is called a Chart. Under the hood a `Chart` is a collection of files definiting the configuration of Kubernetes resources. The [Kubernetes github organization][5]{:target="_blank"} provides a list of [stable Charts][6]{:target="_blank"}.
 
 ### Installation Steps
 
-There are a couple of [helm installation options][7], for this install we will be using homebrew.
+There are a couple of [helm installation options][7]{:target="_blank"}, for this install we will be using homebrew.
 
 1. run `brew install kubernetes-helm`
 1. run `helm init`
@@ -69,7 +69,7 @@ There are a couple of [helm installation options][7], for this install we will b
 
 ## Kubernetes WebUI Dashboard Install
 
-The Kubernetes dashboard is the command central of your Kubernetes cluster. From here you can graphically monitor the status of deployments as well as dive into the logs to troubleshoot failed deployments. We will be using the install from the [Kubernetes Githup][8].
+The Kubernetes dashboard is the command central of your Kubernetes cluster. From here you can graphically monitor the status of deployments as well as dive into the logs to troubleshoot failed deployments. We will be using the install from the [Kubernetes Githup][8]{:target="_blank"}.
 
 ### Installation Steps
 

@@ -5,6 +5,6 @@ permalink: /guides/minikube/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 Coming soon.

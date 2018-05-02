@@ -7,7 +7,9 @@ permalink: /
 order: 1
 ---
 
-{% include licensing.md %}
+
+
+# Overview
 
 Astronomer Enterprise Edition is an enterprise-grade data
 engineering platform that allows any developer to jump to the task
@@ -19,11 +21,11 @@ running pipelines.
 The platform leverages leading open source tools
 including Kubernetes, Airflow, Prometheus, and Grafana — and also
 includes a library of
-[open-source Airflow connectors](https://github.com/airflow-plugins)
+[open-source Airflow connectors](https://github.com/airflow-plugins){:target="_blank"}
 that we have been building and curating for the past year.
 
-<iframe width="560" height="315" style="display: block; margin: 20px auto;"
-  src="https://www.youtube.com/embed/PESuvgnsP8Q"
+<iframe width="560" height="315" style="display: block; margin: 4rem auto;"
+  src="https://www.youtube.com/embed/J-qIzADJlV8"
   frameborder="0" allow="autoplay; encrypted-media"
 allowfullscreen></iframe>
 
@@ -31,8 +33,8 @@ allowfullscreen></iframe>
 
 ## Modules
 
-1. [Clickstream](/clickstream) — Docker images for an [Analytics.js](https://github.com/segmentio/analytics.js)-based clickstream system with server-side event processing. Includes a Go Event API, Apache Kafka, Go Event Router, and server-side integration workers that push data off to ~50 common APIs.
-1. [Airflow](/airflow) — Docker images for [Apache Airflow](https://airflow.apache.org/)-based ETL system that is pre-configured to run Airflow, Celery, Flower, StatsD, Prometheus, and Grafana.
+1. [Clickstream](/clickstream) — Docker images for an [Analytics.js](https://github.com/segmentio/analytics.js){:target="_blank"}-based clickstream system with server-side event processing. Includes a Go Event API, Apache Kafka, Go Event Router, and server-side integration workers that push data off to ~50 common APIs.
+1. [Airflow](/airflow) — Docker images for [Apache Airflow](https://airflow.apache.org/){:target="_blank"}-based ETL system that is pre-configured to run Airflow, Celery, Flower, StatsD, Prometheus, and Grafana.
 
 ## Building the Documentation
 

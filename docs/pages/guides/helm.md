@@ -5,7 +5,7 @@ permalink: /guides/helm/
 hide: true
 ---
 
-{% include licensing.md %}
+
 
 # Helm
 

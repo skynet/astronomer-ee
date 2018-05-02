@@ -5,7 +5,7 @@ permalink: /clickstream/
 order: 3
 ---
 
-{% include licensing.md %}
+
 
 ## Architecture
 
