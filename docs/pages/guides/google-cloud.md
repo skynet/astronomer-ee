@@ -29,6 +29,24 @@ Private clusters is currently a beta feature on Google Kubernetes Engine (GKE) t
 
 To complete this installation guide, you will need to have Kubernetes Admin and Compute Admin roles in GCP. You need permission to create a cluster, as well as provision a static IP address.
 
+## Pre setup
+We're going to set some local environment variables to ease the rest of the process, customize as needed:
+```bash
+export CLUSTER_NAME=my-cluster
+export GKE_REGION=us-east4
+export PROJECT_ID=gcp-project-id
+export YOUR_DOMAIN=astronomer.yourdomain.com
+export YOUR_EMAIL_ADDRESS=you@yourdomain.com
+export NAMESPACE=astronomer
+```
+
+If you aren't sure about the `PROJECT_ID`, you can list your GCP projects with
+```bash
+gcloud projects list
+```
+
+Create a static IP address with the following command:
+
 ## Configuration File
 
 Once you have cloned the helm repository, change into that directory. The helm charts are built to be customizable and tailored to your unique environment. The way we customize an installation is through a YAML configuration file. This file can contain global configurations that are used in multiple charts, or chart specific configurations. Global configurations are underneath the top-level `global` key. Chart specific configurations will be nested under top-level keys that correspond to the chart name. For example, to override values in the `airflow` chart, you will need to create a top-level key, `airflow`, and nest configurations under it.
@@ -51,16 +69,20 @@ kubectl create namespace astronomer
 
 ## DNS
 
-By default, the Astronomer Platform will only be accessible from within the Kubernetes cluster. In a production environment, you'll most likely want to securely expose the various web interfaces to the internet so your team can collaborate on the platform. To do this you'll probably want to assign the platform a domain name that you own, so your users don't have to remember an IP address. On GCP, you can create a static IP address with the following command:
+By default, the Astronomer Platform will only be accessible from within the Kubernetes cluster.
+In a production environment, you'll most likely want to securely expose the various web interfaces to the internet 
+so your team can collaborate on the platform.To do this you'll probably want to assign the platform a domain name that 
+you own, so your users don't have to remember an IP address. On GCP, you can create a static IP address with the 
+following command:
 
 ```bash
-gcloud compute addresses create ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT_ID}
+gcloud compute addresses create ${CLUSTER_NAME}-external-ip --region ${GKE_REGION} --project ${PROJECT_ID}
 ```
 
 To view the newly created IP address run this command:
 
 ```bash
-gcloud compute addresses describe ${CLUSTER_NAME}-external-ip --region ${REGION} --project ${PROJECT_ID} --format='value(address)'
+gcloud compute addresses describe ${CLUSTER_NAME}-external-ip --region ${GKE_REGION} --project ${PROJECT_ID} --format='value(address)'
 ```
 
 Copy this value and populate `global.loadBalancerIP` in your `config.yaml` file.
@@ -77,45 +99,34 @@ The Astronomer Platform requires several secrets to be in place before installat
 
 All connection strings should be created with a `connection` key that contains the actual connection string. Postgres is required for the relational data, and we typically recommend Redis for the Celery task queue. You'll need to ensure that the databases specified here exist prior to deployment.
 
+In these docs, we make an assumption on the database name, but you are free to change them to whatever you want, assuming two secret don't share the same database name.
+
 WARNING: The examples here use the `--from-literal` option to demonstrate the format of the values, but you can just as easily create the secrets from txt files, using the `--from-file` option. This would look something like this: `kubectl create secret generic airflow-metadata --from-file connection=airflow-metadata.txt`, where the content of the `txt` file is the connection string. If you do use the `--from-literal` form, the secrets will most likely be hanging around in your shell's history, which could be a security concern.
 
-The following commands are using the default secret names specified in the root `values.yaml`. If you change the names, make sure you update your `config.yaml` file. These values are located under `airflow.data`. Also, don't forget to switch your `kubectl` default context to the namespace you created earlier, or specify the namespace with the `--namespace` flag.
+The following commands are using the default secret names specified in the root `values.yaml`.
+If you change the names, make sure you update your `config.yaml` file. 
+These values are located under `airflow.data`.
+Also, don't forget to switch your `kubectl` default context to the namespace you created earlier, or specify the namespace with the `--namespace` flag.
 
-<!-- markdownlint-disable MD036 -->
-*Note: Pay careful attention to the 3 different styles of PostgreSQL URI schemes required below (`postgresql://...`, `db+postgresql://...`, `postgres://...`).*
-<!-- markdownlint-enable MD036 -->
+Below we'll assume your PostgreSQL is running on port 5432, and Redis on 6379.
 
-First, let's create a secret for the houtson database, houston being the core API of Astronomer.
+First, let's create a Postgres secret for the houston database, houston being the core API of Astronomer.
 
 ```bash
-kubectl create secret generic houston-database --from-literal connection='postgresql://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic houston-database --from-literal connection='postgresql://username:password@host:5432/houston' --namespace ${NAMESPACE}
 ```
 
-Now, let's create the secret for Airflow, starting with the db for Airflow metadata.
+Now, let's create the Postgres secret for Airflow deployments
 
 ```bash
-kubectl create secret generic airflow-metadata --from-literal connection='postgresql://username:password@host:port/database' --namespace astronomer
-```
-
-Next, let's create a secret for the Celery result backend. This only creates two additional tables, so we typically reuse the same database as the Airflow metadata. Note the `db+` prefix on this version.
-
-```bash
-kubectl create secret generic airflow-result-backend --from-literal connection='db+postgresql://username:password@host:port/database' --namespace astronomer
-```
-
-Now, let's create a secret for Grafana. We recommend a separate database on the same server for this data. Note that Grafana expects yet another form of the postgres scheme, different from the first two.
-
-```bash
-kubectl create secret generic grafana-backend --from-literal connection='postgres://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic airflow-database --from-literal connection='postgresql://username:password@host:5432/airflow' --namespace ${NAMESPACE}
 ```
 
 Finally, let's create a secret for the Airflow task queue broker. Note that if you are using redis, the database name is an integer between 0 and 15.
 
 ```bash
-kubectl create secret generic airflow-broker --from-literal connection='redis://username:password@host:port/database' --namespace astronomer
+kubectl create secret generic airflow-redis --from-literal connection='redis://:password@host:6379/0' --namespace ${NAMESPACE}
 ```
-
-
 
 ### TLS
 
@@ -126,12 +137,13 @@ When getting started with the Astronomer Platform you can deploy without enablin
 If you already have a wildcard certificate for the domain you are running under, then you can create the secret by running this command, specifying the absolute paths to the files on your system.
 
 ```bash
-kubectl create secret tls ${CLUSTER_NAME}-tls --key domain.key --cert domain.crt --namespace astronomer
+kubectl create secret tls ${CLUSTER_NAME}-tls --key domain.key --cert domain.crt --namespace ${NAMESPACE}
 ```
 
 You can name the secret whatever you want. Just make sure to update the `global.tlsSecret` value in your `config.yaml` if you change it.
 
 #### Let's Encrypt
+*Note: We highly recommend using a wildcard certificate for production usage *
 
 If you do not already have a valid certificate, and do not want to purchase one, you can use the free service, [Let's Encrypt](https://letsencrypt.org/). [Kube-lego](https://github.com/jetstack/kube-lego) is a project that you can deploy into your cluster that will take care of registering with Let's Encrypt and populating the secret with a TLS certificate for you. You can deploy it using the following command:
 
@@ -174,21 +186,22 @@ htpasswd auth ${USERNAME}
 Now, let's create the secret from that file. If you change the name of the secret, be sure to update `base.nginxAuthSecret` in your `config.yaml`.
 
 ```bash
-kubectl create secret generic nginx-auth --from-file auth --namespace astronomer
+kubectl create secret generic nginx-auth --from-file auth --namespace ${NAMESPACE}
 ```
 
 Now, we need to create a secret to give Kubernetes access to pull images from the private registry. The username and password here should match one user in the auth file created above.
 
 ```bash
-kubectl create secret docker-registry registry-auth --docker-server registry.${YOUR_DOMAIN} --docker-username ${USERNAME} --docker-password ${PASSWORD} --docker-email ${YOUR_EMAIL} --namespace astronomer
+kubectl create secret docker-registry registry-auth --docker-server registry.${YOUR_DOMAIN} --docker-username ${USERNAME} --docker-password ${PASSWORD} --docker-email ${YOUR_EMAIL} --namespace ${NAMESPACE}
 ```
 
 Finally, in preparation for an authentication system, we need to create a passphrase for encrypting JWTs.
 
 ```bash
-kubectl create secret generic houston-jwt-passphrase --from-literal passphrase=${RANDON_STRING} --namespace astronomer
+# Generate random string
+RANDOM_STRING=$(head /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+kubectl create secret generic houston-jwt-passphrase --from-literal passphrase=${RANDOM_STRING} --namespace ${NAMESPACE}
 ```
-
 
 
 ## Installation
@@ -196,7 +209,7 @@ kubectl create secret generic houston-jwt-passphrase --from-literal passphrase=$
 Now that we have everything in place, we can deploy the Astronomer Platform to your cluster. All you need to do is run `helm install`, and specify your configuration file.
 
 ```bash
-helm install -f config.yaml --namespace astronomer .
+helm install -f config.yaml --namespace ${NAMESPACE} .
 ```
 
 If you recieve any weird errors from helm, you may need to give Tiller access to the Kubernetes API. Check out [our post](/guides/helm) on setting helm up with the proper permissions.
@@ -206,7 +219,7 @@ If you recieve any weird errors from helm, you may need to give Tiller access to
 To roll out an upgrade to an existing release:
 
 ```bash
-helm upgrade -f config.yaml --namespace astronomer <release name> .
+helm upgrade -f config.yaml --namespace ${NAMESPACE} <release name> .
 ```
 
 ## Test
